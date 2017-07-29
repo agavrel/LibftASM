@@ -1,17 +1,17 @@
-global _ft_isascii
+global _ft_isdigit
 
 section .text
 
 ; rdi : general register, destination address for mov and cmp
 
-_ft_isascii:		; int ft_isascii
-	cmp rdi, 0		; cmp rdi with 0
+_ft_isdigit:		; int ft_isdigit
+	cmp rdi, 48		; cmp rdi with 48 ('0')
 	jl false		; jump to label false if inferior
-		; hence: if < 0 return 0
+		; hence: if < '0' return 0
 
-	cmp rdi, 127	; cmp rdi with 127
+	cmp rdi, 57		; cmp rdi with 57 ('9')
 	jg false		; jump to label false if greater
-		; hence: if > 127 return 0
+		; hence: if > '9' return 0
 
 	mov eax, 1
 	ret				; return 1
