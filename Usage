@@ -1,0 +1,1 @@
+Make && gcc libfts.a && clear && ./a.out
