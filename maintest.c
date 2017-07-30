@@ -3,42 +3,29 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <time.h>
 #include "libfts.h"
 
 int main(void)
 {
 	int tmp;
-
+	int check;
+	int r; // random number
+	srand(time(NULL));
 /*
 **************************** is_ascii ******************************************
 */
 
-	dprintf(1, "\x1b[32mft_isdigit:\x1b[0m\n");
-	tmp = '0' - 1;
-	while (++tmp < 60)
-		dprintf(1, "\t%c -> %d\n", tmp, ft_isdigit(tmp));
-
-/*
-**************************** is_ascii ******************************************
-*/
-
-	dprintf(1, "\n\x1b[32mft_isascii:\x1b[0m\n");
-	dprintf(1, "\t%c -> %d\n", '!', ft_isascii('!'));
-	dprintf(1, "\t%c -> %d\n", '@', ft_isascii('@'));
-	dprintf(1, "\t%c -> %d\n", 'A', ft_isascii('A'));
-	dprintf(1, "\t%c -> %d\n", 'F', ft_isascii('F'));
-	dprintf(1, "\t%c -> %d\n", 'K', ft_isascii('K'));
-	dprintf(1, "\t%c -> %d\n", 'T', ft_isascii('T'));
-	dprintf(1, "\t%c -> %d\n", 'Z', ft_isascii('Z'));
-	dprintf(1, "\t%c -> %d\n", '[', ft_isascii('['));
-	dprintf(1, "\t%c -> %d\n", '`', ft_isascii('`'));
-	dprintf(1, "\t%c -> %d\n", 145, ft_isascii(145));
-	dprintf(1, "\t%c -> %d\n", 'f', ft_isascii('f'));
-	dprintf(1, "\t%c -> %d\n", 'k', ft_isascii('k'));
-	dprintf(1, "\t%c -> %d\n", 't', ft_isascii('t'));
-	dprintf(1, "\t%c -> %d\n", 224, ft_isascii(224));
-	dprintf(1, "\t%c -> %d\n", '{', ft_isascii('{'));
-	dprintf(1, "\t%c -> %d\n", '~', ft_isascii('~'));
+dprintf(1, "\n\x1b[32mft_isascii:\x1b[0m\n");
+tmp = -1;
+while (++tmp < 255)
+{
+	dprintf(1, "\t%c -> %d", tmp, check = ft_isascii(tmp));
+	if (check && (-1 < tmp && tmp < 128) || (!check && (0 > tmp || tmp > 127)))
+		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+	else
+		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+}
 
 /*
 **************************** is_isupper ****************************************
@@ -115,6 +102,20 @@ int main(void)
 	dprintf(1, "\t%s -> %d\n", "9 bytes", ft_strlen("123456789"));
 
 /*
+**************************** isdigit *******************************************
+*/
+	dprintf(1, "\n\x1b[32mft_isdigit:\x1b[0m\n");
+	tmp = -1;
+	while (++tmp < 127)
+	{
+		dprintf(1, "\t%c -> %d", tmp, check = ft_isdigit(tmp));
+		if (check && (47 < tmp && tmp < 58) || (!check && (48 > tmp || tmp > 57)))
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
+
+/*
 **************************** isalnum *******************************************
 */
 	dprintf(1, "\n\x1b[32mft_isalnum:\x1b[0m\n");
@@ -125,9 +126,31 @@ int main(void)
 **************************** isalnum *******************************************
 */
 	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
-	tmp = 32 - 1 - 1;
-	while (++tmp < 127 + 1)
-		dprintf(1, "\t%c -> %d\n", tmp, ft_isprint(tmp));
+	tmp = -1;
+	while (++tmp < 128)
+	{
+		dprintf(1, "\t%c -> %d", tmp, check = ft_isprint(tmp));
+		if (check && (31 < tmp && tmp < 127) || (!check && (32 > tmp || tmp > 126)))
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
+
+/*
+**************************** isalnum *******************************************
+*/
+	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
+	tmp = 10;
+	while (tmp--)
+	{
+		r = rand() % 128;
+		dprintf(1, "\t%c -> %d", r, check = ft_isprint(r));
+		if (check && (31 < r && r < 127) || (!check && (32 > r || r > 126)))
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
+
 
 	return (0);
 }
