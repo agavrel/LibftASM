@@ -10,10 +10,11 @@ section .text
 ; rdi : general register, destination address for mov and cmp
 
 _ft_isalpha:		; int ft_isalpha
+
 .enter:
 	push rbp
-	mov rbp, rsp	; move stack pointer to base pointer
-	
+	mov rbp, rsp		; move stack pointer to base pointer
+
 	call _ft_islower	; call lower function
 	cmp rax, 1			; checks if it returns 1
 	je .true			; if equal jump to
@@ -22,7 +23,7 @@ _ft_isalpha:		; int ft_isalpha
 	cmp rax, 1
 	je .true
 
-	mov rax, 0
+	mov rax, 0			; returns 0 if isupper and islower
 
 .leave:
 	mov rsp, rbp

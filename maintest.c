@@ -106,5 +106,13 @@ int main(void)
 	dprintf(1, "\t%c -> %d\n", '{', ft_isalpha('{'));
 	dprintf(1, "\t%c -> %d\n", '~', ft_isalpha('~'));
 
+/*
+**************************** strlen ********************************************
+*/
+	dprintf(1, "\n\x1b[32mft_strlen:\x1b[0m\n");
+	dprintf(1, "\t%s -> %d\n", "hello", ft_strlen("hello"));
+	dprintf(1, "\t%s -> %d\n", "{empty}", ft_strlen(""));
+	dprintf(1, "\t%s -> %d\n", "9 bytes", ft_strlen("123456789"));
+
 	return (0);
 }
