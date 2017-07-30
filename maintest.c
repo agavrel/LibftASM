@@ -114,5 +114,20 @@ int main(void)
 	dprintf(1, "\t%s -> %d\n", "{empty}", ft_strlen(""));
 	dprintf(1, "\t%s -> %d\n", "9 bytes", ft_strlen("123456789"));
 
+/*
+**************************** isalnum *******************************************
+*/
+	dprintf(1, "\n\x1b[32mft_isalnum:\x1b[0m\n");
+	tmp = 32 - 1;
+	while (++tmp < 127)
+		dprintf(1, "\t%c -> %d\n", tmp, ft_isalnum(tmp));
+/*
+**************************** isalnum *******************************************
+*/
+	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
+	tmp = 32 - 1 - 1;
+	while (++tmp < 127 + 1)
+		dprintf(1, "\t%c -> %d\n", tmp, ft_isprint(tmp));
+
 	return (0);
 }
