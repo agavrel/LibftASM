@@ -3,20 +3,24 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: angavrel <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2017/07/29 21:40:45 by angavrel         ###   ########.fr        #
+#    Updated: 2017/07/30 18:33:08 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =				libfts.a
-ASM_FILES =			hello
+ASM_FILES =			ft_isascii	\
+					ft_isdigit	\
+					ft_isupper	\
+					ft_islower	\
+					ft_isalpha	\
 
 ASM_COMPILER =		~/.brew/bin/nasm -f macho64
-ASM_SRC_DIR =		./srcs/
+ASM_SRC_DIR =		srcs/
 ASM_OBJ_DIR_NAME =	obj
-ASM_OBJ_DIR =		./$(ASM_OBJ_DIR_NAME)/
+ASM_OBJ_DIR =		$(ASM_OBJ_DIR_NAME)/
 ASM_OBJ :=			$(addsuffix .o,$(ASM_FILES))
 ASM_OBJ :=			$(addprefix $(ASM_OBJ_DIR),$(ASM_OBJ))
 
@@ -25,7 +29,7 @@ TEST_FILES =		main
 
 C_COMPILER =		clang -Wall -Werror -Wextra
 TEST_DIR_NAME =		test
-TEST_DIR =			./$(TEST_DIR_NAME)/
+TEST_DIR =			$(TEST_DIR_NAME)/
 TEST_OBJ :=			$(addsuffix .o,$(TEST_FILES))
 TEST_OBJ :=			$(addprefix $(TEST_DIR),$(TEST_OBJ))
 

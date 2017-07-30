@@ -1,37 +1,34 @@
+; https://en.wikipedia.org/wiki/X86_calling_conventions
+
 global _ft_isalpha
+
+extern _ft_islower
+extern _ft_isupper
 
 section .text
 
 ; rdi : general register, destination address for mov and cmp
 
 _ft_isalpha:		; int ft_isalpha
+.enter:
 	push rbp
-	mov rbp, rsp
-	sub rsp, 8
-	mov eax, edi
-	mov BYTE PTR [rbp-4], al
-	movsx eax, BYTE PTR [rbp-4]
-	mov edi, eax
-	call ft_islower(char)
-	test eax, eax
-	je .L6
-	movsx eax, BYTE PTR [rbp-4]
-	mov edi, eax
-	call ft_isupper(char)
-	test eax, eax
-	jne .L7
-.L6:
-	mov eax, 1
-	jmp .L8
-.L7:
-	mov eax, 0
-.L8:
-	test al, al
-	je .L9
-	mov eax, 0
-	 jmp .L10
-.L9:
-	 mov eax, 1
-.L10:
-	 leave
-	 ret
+	mov rbp, rsp	; move stack pointer to base pointer
+	
+	call _ft_islower	; call lower function
+	cmp rax, 1			; checks if it returns 1
+	je .true			; if equal jump to
+
+	call _ft_isupper
+	cmp rax, 1
+	je .true
+
+	mov rax, 0
+
+.leave:
+	mov rsp, rbp
+	pop rbp
+	ret				; return value on rax
+
+.true:
+	mov rax, 1
+	jmp .leave

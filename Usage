@@ -1,1 +1,1 @@
-Make && gcc libfts.a && clear && ./a.out
+Make && gcc libfts.a maintest.c && clear && ./a.out

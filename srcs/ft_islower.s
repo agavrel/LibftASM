@@ -13,9 +13,9 @@ _ft_islower:		; int ft_islower
 	jg false		; jump to label false if greater
 		; hence: if > 127 return 0
 
-	mov eax, 1
+	mov rax, 1
 	ret				; return 1
 
 false:
-	mov eax, 0
+	mov rax, 0
 	ret				; return 0
