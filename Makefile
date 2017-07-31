@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2017/07/30 22:18:45 by angavrel         ###   ########.fr        #
+#    Updated: 2017/07/31 20:26:11 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ ASM_FILES =			ft_isascii	\
 					ft_isalnum	\
 					ft_isprint	\
 					ft_strlen	\
+					ft_puts		\
 
 ASM_COMPILER =		~/.brew/bin/nasm -f macho64
 ASM_SRC_DIR =		srcs/

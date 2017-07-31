@@ -151,6 +151,16 @@ while (++tmp < 255)
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 	}
 
+/*
+**************************** putstr ********************************************
+*/
+	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
+	tmp = 5;
+	const char *mystring[] = {"Hello", "world", "42", "rocks", "omg"};
+	while (tmp--)
+	{
+		ft_putstr(mystring[rand() % 5]);
+	}
 
 	return (0);
 }
