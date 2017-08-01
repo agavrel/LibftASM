@@ -162,5 +162,20 @@ while (++tmp < 255)
 		ft_putstr(mystring[rand() % 5]);
 	}
 
+/*
+**************************** memcpy ********************************************
+*/
+	const char	src[64] = "hello world";
+	char		dst[64];
+	dprintf(1, "\n\x1b[32mft_memcpy:\x1b[0m\n");
+
+//	memset(dst, 0, sizeof(dst));
+//	dprintf(1, "\t'%s' <- buf\n", dst);
+	ft_memcpy(dst, src, 42);
+	dprintf(1, "\t'%s' <- ft_memcpy(NULL, buf, 42)", dst);
+	if (!strcmp(dst, "hello world"))
+		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+	else
+		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 	return (0);
 }
