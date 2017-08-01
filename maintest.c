@@ -177,5 +177,30 @@ while (++tmp < 255)
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
+/*
+**************************** toupper *******************************************
+*/
+dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
+	char c = ft_toupper('a');
+
+	dprintf(1, "\t'%c' <- ft_toupper(\"a\")", c);
+	if (c == 'a' - 32)
+		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+	else
+		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
+/*
+**************************** tolower *******************************************
+*/
+dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
+	c = ft_tolower('B');
+
+	dprintf(1, "\t'%c' <- ft_tolower(\"B\")", c);
+	if (c == 'B' + 32)
+		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+	else
+		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
 	return (0);
 }
