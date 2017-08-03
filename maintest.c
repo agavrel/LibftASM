@@ -21,7 +21,7 @@ tmp = -1;
 while (++tmp < 255)
 {
 	dprintf(1, "\t%c -> %d", tmp, check = ft_isascii(tmp));
-	if (check && (-1 < tmp && tmp < 128) || (!check && (0 > tmp || tmp > 127)))
+	if ((check && (-1 < tmp && tmp < 128)) || (!check && (0 > tmp || tmp > 127)))
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
@@ -109,7 +109,7 @@ while (++tmp < 255)
 	while (++tmp < 127)
 	{
 		dprintf(1, "\t%c -> %d", tmp, check = ft_isdigit(tmp));
-		if (check && (47 < tmp && tmp < 58) || (!check && (48 > tmp || tmp > 57)))
+		if ((check && (47 < tmp && tmp < 58)) || (!check && (48 > tmp || tmp > 57)))
 			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 		else
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
@@ -130,7 +130,7 @@ while (++tmp < 255)
 	while (++tmp < 128)
 	{
 		dprintf(1, "\t%c -> %d", tmp, check = ft_isprint(tmp));
-		if (check && (31 < tmp && tmp < 127) || (!check && (32 > tmp || tmp > 126)))
+		if ((check && (31 < tmp && tmp < 127)) || (!check && (32 > tmp || tmp > 126)))
 			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 		else
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
@@ -145,7 +145,7 @@ while (++tmp < 255)
 	{
 		r = rand() % 128;
 		dprintf(1, "\t%c -> %d", r, check = ft_isprint(r));
-		if (check && (31 < r && r < 127) || (!check && (32 > r || r > 126)))
+		if ((check && (31 < r && r < 127)) || (!check && (32 > r || r > 126)))
 			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 		else
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
@@ -159,7 +159,7 @@ while (++tmp < 255)
 	const char *mystring[] = {"Hello", "world", "42", "rocks", "omg"};
 	while (tmp--)
 	{
-		ft_putstr(mystring[rand() % 5]);
+		ft_puts((char *)mystring[rand() % 5]);
 	}
 
 /*
@@ -201,6 +201,24 @@ dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
+/*
+**************************** ft_strcat *****************************************
+*/
+dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
+	char	mycat[64] = "a";
+
+	ft_strcat(mycat, " cats");
+	dprintf(1, "\t%s -> a cats\n", mycat);
+
+	ft_strcat(mycat, "!");
+	dprintf(1, "\t%s -> a cats!\n", mycat);
+
+	ft_strcat(mycat, "");
+	dprintf(1, "\t%s -> a cats!\n", mycat);
+
+	ft_strcat(mycat, " mmmh...");
+	dprintf(1, "\t%s -> a cats! mmmh...\n", mycat);
 
 	return (0);
 }
