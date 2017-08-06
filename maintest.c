@@ -208,17 +208,17 @@ dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
 dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
 	char	mycat[64] = "a";
 
-	ft_strcat(mycat, " cats");
-	dprintf(1, "\t%s -> a cats\n", mycat);
+	ft_strcat(mycat, " hello");
+	dprintf(1, "\t%s -> a hello\n", mycat);
 
 	ft_strcat(mycat, "!");
-	dprintf(1, "\t%s -> a cats!\n", mycat);
+	dprintf(1, "\t%s -> a hello!\n", mycat);
 
 	ft_strcat(mycat, "");
-	dprintf(1, "\t%s -> a cats!\n", mycat);
+	dprintf(1, "\t%s -> a hello!\n", mycat);
 
-	ft_strcat(mycat, " mmmh...");
-	dprintf(1, "\t%s -> a cats! mmmh...\n", mycat);
+	ft_strcat(mycat, " world..");
+	dprintf(1, "\t%s -> a hello! world.\n", mycat);
 
 /*
 **************************** ft_strcat *****************************************
@@ -232,6 +232,15 @@ dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 	dprintf(1, "\t%d -> %d\n", ft_pow(2, 0), t);
 	t = pow(2, -1);
 	dprintf(1, "\t%d -> %d\n", ft_pow(2, -1), t);
+
+/*
+**************************** ft_strdup *****************************************
+*/
+dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
+	char	*mydup;
+
+	dprintf(1, "\t'%s' <- ft_strdup('hello')\n", (mydup = ft_strdup("hello")));
+	free(tmp);
 
 	return (0);
 }
