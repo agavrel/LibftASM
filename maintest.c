@@ -220,5 +220,18 @@ dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
 	ft_strcat(mycat, " mmmh...");
 	dprintf(1, "\t%s -> a cats! mmmh...\n", mycat);
 
+/*
+**************************** ft_strcat *****************************************
+*/
+dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
+	int t;
+
+	t = pow(2, 3);
+	dprintf(1, "\t%d -> %d\n", ft_pow(2, 3), t);
+	t = pow(2, 0);
+	dprintf(1, "\t%d -> %d\n", ft_pow(2, 0), t);
+	t = pow(2, -1);
+	dprintf(1, "\t%d -> %d\n", ft_pow(2, -1), t);
+
 	return (0);
 }

@@ -16,5 +16,6 @@ void		*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 char		*ft_strcat(char *restrict s1, const char *restrict s2);
+int			ft_pow(int x, int y);
 
 #endif
