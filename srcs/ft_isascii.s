@@ -4,18 +4,7 @@ section .text
 
 ; rdi : general register, destination address for mov and cmp
 
-_ft_isascii:		; int ft_isascii
-	cmp rdi, 0		; cmp rdi with 0
-	jl false		; jump to label false if inferior
-		; hence: if < 0 return 0
-
-	cmp rdi, 127	; cmp rdi with 127
-	jg false		; jump to label false if greater
-		; hence: if > 127 return 0
-
-	mov rax, 1
-	ret				; return 1
-
-false:
-	mov rax, 0
-	ret				; return 0
+_ft_isascii:
+	and     edi, 0xffffff80 ; mask with the 128 firsts bits left to 0 as ASCII range from 0 to 7f in hexa (just below 80)
+	sete    al 				; SETE sets AL to 1 if above condition code means "equal", otherwise it sets AL to 0.
+ 	ret

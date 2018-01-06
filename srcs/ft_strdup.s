@@ -24,7 +24,9 @@ _ft_strdup:			; char *strdup(const char *s);
 	pop		rdx
 	pop		rsi
 	call	_ft_memcpy
-	leave
+	mov		rsp, rbp
+	pop		rbp
+	;leave
 	ret
 
 .error:
