@@ -1,21 +1,18 @@
 global _ft_islower
 
+extern _ft_isalpha
+
 section .text
 
-; rdi : general register, destination address for mov and cmp
+_ft_islower:			; int ft_islower
+	call	_ft_isalpha
+	test	eax, eax
+	jz		.end
+	and		edi, 0x20	; checks if 6th bit if ON
+	jz		.end		; if not set, jumps to .end
+	mov		eax, 1
+	ret
 
-_ft_islower:		; int ft_islower
-	cmp rdi, 97		; cmp rdi with 97
-	jl false		; jump to label false if inferior
-		; hence: if < 0 return 0
-
-	cmp rdi, 122	; cmp rdi with 122
-	jg false		; jump to label false if greater
-		; hence: if > 127 return 0
-
-	mov rax, 1
-	ret				; return 1
-
-false:
-	mov rax, 0
-	ret				; return 0
+ .end:
+ 	mov		eax, 0
+	ret

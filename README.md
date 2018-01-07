@@ -1,5 +1,5 @@
 # LibftASM
-libc functions coded with assembly language</br>
+## libc functions coded with assembly language
 Install NASM :
 ```
 brew install nasm
@@ -11,6 +11,7 @@ Make && gcc libfts.a maintest.c && clear && ./a.out
 Some useful explanations on asm keywords:
 ```
 https://c9x.me/x86
+https://en.wikipedia.org/wiki/X86_calling_conventions
 1) Arguments passed to the function are the following: 1st: rdi , 2nd: rsi, 3rd: rdx, 4th: rcx, 5th: r8, 6th: r9. If more params are passed they are stored on the Stack.
 2) Function's return value: ax for 16 bits, eax 32 bits, and rax 64 bits.
 3) EAX is the full 32-bit value with AX is the lower 16-bits, AL is the lower 8 bits, AH is the bits 8 through 15 (zero-based)

@@ -1,16 +1,15 @@
 global _ft_toupper
 
+extern _ft_isalpha
+
 section .text
 
 _ft_toupper:
-	cmp rdi, 'a'
-	jl .end
+	call	_ft_isalpha
+	test	eax, eax
+	jz		.end
+	and		edi, 0xffffffdf	;	0xffffffdf - 0x20 : it sets the 6th bit to 1
 
-	cmp rdi, 'z'
-	jg .end
-
-	sub rdi, 32
-
-.end:
-	mov rax, rdi
+ .end:
+ 	mov		eax, edi
 	ret

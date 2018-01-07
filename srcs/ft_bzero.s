@@ -8,8 +8,6 @@ _ft_bzero:
 	call _ft_memset
 	cmp	rdi, 0
 	je	.error		; jump to label .error if rdi is equal to 0
-
-
 	ret
 
 .error:

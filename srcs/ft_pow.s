@@ -7,8 +7,8 @@ _ft_pow:        ; int ft_pow(int x, int y);
 ; using e(ax) instead of r(ax) as integer is on 4 bytes, 32 bits
 
     mov eax, 1   	; return value = 1
-    cmp esi, 0    	; if exponent = 0
-    je	.end        ; then returns 1
+    test esi, esi   ; if exponent = 0
+    jz	.end        ; then returns 1
 
     mov ecx, esi    ; ecx (iterator) = esi (y value, exponent)
     xor edx, edx    ; double result = 0;

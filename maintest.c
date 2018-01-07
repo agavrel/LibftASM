@@ -121,9 +121,16 @@ while (++tmp < 255)
 	dprintf(1, "\n\x1b[32mft_isalnum:\x1b[0m\n");
 	tmp = 32 - 1;
 	while (++tmp < 127)
-		dprintf(1, "\t%c -> %d\n", tmp, ft_isalnum(tmp));
+	{
+		dprintf(1, "\t%c -> %d", tmp, check = ft_isalnum(tmp));
+		if (check)// && (ft_isalpha(tmp) || ft_isdigit(tmp)))
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
+
 /*
-**************************** isalnum *******************************************
+**************************** isprint *******************************************
 */
 	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
 	tmp = -1;
@@ -193,7 +200,7 @@ dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
 /*
 **************************** tolower *******************************************
 */
-dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
+dprintf(1, "\n\x1b[32mft_tolower:\x1b[0m\n");
 	c = ft_tolower('B');
 
 	dprintf(1, "\t'%c' <- ft_tolower(\"B\")", c);
@@ -232,7 +239,6 @@ dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 	dprintf(1, "\t%d -> %d\n", ft_pow(2, 0), t);
 	t = pow(2, -1);
 	dprintf(1, "\t%d -> %d\n", ft_pow(2, -1), t);
-
 
 	char k = 'd';
 	dprintf(1, "\t%c -> %d\n", k, 0xffffff80 & 128);
