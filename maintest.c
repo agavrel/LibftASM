@@ -251,9 +251,8 @@ dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 */
 dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
 	char	*mydup;
-
-	dprintf(1, "\t'%s' <- ft_strdup('hello')\n", (mydup = ft_strdup("hello")));
-	free(tmp);
+	mydup = ft_strdup("hello");
+	dprintf(1, "\t'%s' <- ft_strdup('hello')\n", mydup);
 
 	return (0);
 }
