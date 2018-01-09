@@ -29,18 +29,22 @@ ASM_FILES =			ft_isascii	\
 					table_type
 
 
-
+OS := $(shell uname)
+ifeq ($(OS), DARWIN)
 ASM_COMPILER =		~/.brew/bin/nasm -f macho64 -g
+else
+ASM_COMPILER =		nasm -f elf64 -g
+endif
 ASM_SRC_DIR =		srcs/
 ASM_OBJ_DIR_NAME =	obj
 ASM_OBJ_DIR =		$(ASM_OBJ_DIR_NAME)/
 ASM_OBJ :=			$(addsuffix .o,$(ASM_FILES))
 ASM_OBJ :=			$(addprefix $(ASM_OBJ_DIR),$(ASM_OBJ))
 
-TEST =				test.out
-TEST_FILES =		main
+TEST =				maintest.out
+TEST_FILES =		maintest
 
-C_COMPILER =		clang -Wall -Werror -Wextra
+C_COMPILER =		clang -Wall -Werror -Wextra -O3
 TEST_DIR_NAME =		test
 TEST_DIR =			$(TEST_DIR_NAME)/
 TEST_OBJ :=			$(addsuffix .o,$(TEST_FILES))
@@ -54,7 +58,7 @@ $(NAME): $(ASM_OBJ)
 	ar rc $(NAME) $(ASM_OBJ)
 
 test: re $(TEST_OBJ)
-	$(C_COMPILER) $(TEST_OBJ) -I. -L. -lfts -o $(TEST)
+	$(C_COMPILER) -L. $(NAME) $(TEST_OBJ) -o $(TEST)
 
 $(ASM_OBJ): $(ASM_OBJ_DIR)%.o: $(ASM_SRC_DIR)%.s
 	@/bin/mkdir -p $(ASM_OBJ_DIR)

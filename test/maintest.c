@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <time.h>
 #include "libfts.h"
+#include <math.h>
 
 int main(void)
 {
@@ -250,9 +251,9 @@ dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 **************************** ft_strdup *****************************************
 */
 dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
-	char	*mydup;
-	mydup = ft_strdup("hello");
-	dprintf(1, "\t'%s' <- ft_strdup('hello')\n", mydup);
+//	char	*mydup;
+//	mydup = ft_strdup("hello");
+//	dprintf(1, "\t'%s' <- ft_strdup('hello')\n", mydup);
 
 	return (0);
 }

@@ -17,6 +17,6 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 char		*ft_strcat(char *restrict s1, const char *restrict s2);
 int			ft_pow(int x, int y);
-char		*strdup(const char *s);
+char		*ft_strdup(const char *s);
 
 #endif

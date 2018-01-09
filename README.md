@@ -1,12 +1,13 @@
 # LibftASM
 ## libc functions coded with assembly language
-Install NASM :
+Install NASM (1st line mac / 2nd for Linux):
 ```
 brew install nasm
+sudo apt-get install nasm
 ```
 Test library functions :
 ```
-Make && gcc libfts.a maintest.c && clear && ./a.out
+make test
 ```
 Some useful explanations on asm keywords:
 ```
