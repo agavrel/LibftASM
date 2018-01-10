@@ -210,6 +210,16 @@ dprintf(1, "\n\x1b[32mft_tolower:\x1b[0m\n");
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
+
+/*
+**************************** ft_abs ********************************************
+*/
+dprintf(1, "\n\x1b[32mft_abs:\x1b[0m\n");
+	int t = -2147483647;
+	dprintf(1, "\t%d -> %d\n", t, ft_abs(t));
+
+
+
 /*
 **************************** ft_strcat *****************************************
 */
@@ -232,7 +242,6 @@ dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
 **************************** ft_strcat *****************************************
 */
 dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
-	int t;
 
 	t = pow(2, 3);
 	dprintf(1, "\t%d -> %d\n", ft_pow(2, 3), t);
@@ -243,7 +252,6 @@ dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 
 	char k = 'd';
 	dprintf(1, "\t%c -> %d\n", k, 0xffffff80 & 128);
-
 
 
 
