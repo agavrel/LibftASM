@@ -1,10 +1,10 @@
 ; http://6.035.scripts.mit.edu/sp16/x86-64-architecture-guide.html
 
-global _ft_memset
+global ft_memset
 
 section .text
 
-_ft_memset:
+ft_memset:
 	cmp	rdi, 0
 	je	.error		; jump to label .error if rdi is equal to 0
 

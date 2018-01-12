@@ -1,11 +1,11 @@
-global _ft_toupper
+global ft_toupper
 
-extern _ft_isalpha
+extern ft_isalpha
 
 section .text
 
-_ft_toupper:
-	call	_ft_isalpha
+ft_toupper:
+	call	ft_isalpha
 	test	eax, eax
 	jz		.end
 	and		edi, 0xffffffdf	;	0xffffffdf - 0x20 : it sets the 6th bit to 1

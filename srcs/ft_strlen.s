@@ -1,10 +1,10 @@
 ; http://tuttlem.github.io/2013/01/08/strlen-implementation-in-nasm.html
 
-global _ft_strlen
+global ft_strlen
 
 section .text
 
-_ft_strlen:
+ft_strlen:
 
 	mov			rax, rdi				; rdi c'est la str
 	pxor		xmm9, xmm9
@@ -16,7 +16,7 @@ _ft_strlen:
 	pcmpeqb		xmm8, xmm9				; si [rax] a un octet égal à 0, l'octet correspondant de xmm8 sera set à 0xff
 	pmovmskb	edx, xmm8				; tout les premiers bits de chaque octets de xmm8 sont copié dans les 16 derniers bits de edx
 	test		edx, edx
-	jz			_ft_strlen.avant_boucle
+	jz			ft_strlen.avant_boucle
 	xor			rax, rax
 	bsf			eax, edx				; renvoie la position du 1 le plus à droite
 	ret
@@ -39,7 +39,7 @@ _ft_strlen:
 	and			rax, 0xffffffffffffffc0 ; aligne la str sur 64 octets
 	sar			r8, cl					; r11 >> cl, pour compenser l'aligement
 	test		r8, r8
-	je			_ft_strlen.boucle
+	je			ft_strlen.boucle
 	bsf			rax, r8
 	ret
 
@@ -52,7 +52,7 @@ _ft_strlen:
 	pcmpeqb		xmm8, xmm9
 	pmovmskb	edx, xmm8
 	test		edx, edx
-	jz			_ft_strlen.boucle
+	jz			ft_strlen.boucle
 
 .end: ; on sait qu'il y a un 0 mais pas encore où
 	pxor		xmm8, xmm8

@@ -1,13 +1,13 @@
 ; from sploadie git
 
-global _ft_cat
+global ft_cat
 
 section .text
 
 section .data
 	buf: times 256 db 0
 
-_ft_cat:
+ft_cat:
 	push rbp			; stack prep
 	mov rbp, rsp		;
 

@@ -1,8 +1,8 @@
-global _ft_pow
+global ft_pow
 
 section .text
 
-_ft_pow:                ; int ft_pow(int x, int y);
+ft_pow:                ; int ft_pow(int x, int y);
 ; using e(ax) instead of r(ax) as integer is on 4 bytes, 32 bits
     mov     eax, 1   	; return value = 1
     test    esi, esi    ; if exponent = 0

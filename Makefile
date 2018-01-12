@@ -60,7 +60,7 @@ $(NAME): $(ASM_OBJ)
 	ar rc $(NAME) $(ASM_OBJ)
 
 test: re $(TEST_OBJ)
-	$(C_COMPILER) -L. $(NAME) $(TEST_OBJ) -o $(TEST)
+	$(C_COMPILER) -L. $(TEST_OBJ) $(NAME) -o $(TEST)
 
 $(ASM_OBJ): $(ASM_OBJ_DIR)%.o: $(ASM_SRC_DIR)%.s
 	@/bin/mkdir -p $(ASM_OBJ_DIR)

@@ -1,11 +1,11 @@
 ; not yet tested...
 
-global _ft_bzero
+global ft_bzero
 
 section .text
 
-_ft_bzero:
-	call _ft_memset
+ft_bzero:
+	call ft_memset
 	cmp	rdi, 0
 	je	.error		; jump to label .error if rdi is equal to 0
 	ret
