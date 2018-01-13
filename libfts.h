@@ -19,5 +19,7 @@ char		*ft_strcat(char *restrict s1, const char *restrict s2);
 int			ft_pow(int x, int y);
 char		*ft_strdup(const char *s);
 int         ft_abs(int x);
+void        *ft_memset(void *s, int c, size_t n);
+void        ft_bzero(void *s, size_t n);
 
 #endif

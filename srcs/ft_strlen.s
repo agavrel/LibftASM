@@ -5,7 +5,6 @@ global _ft_strlen
 section .text
 
 _ft_strlen:
-
 	mov			rax, rdi				; rdi c'est la str
 	pxor		xmm9, xmm9
 	pxor		xmm10, xmm10

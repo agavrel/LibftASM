@@ -250,18 +250,28 @@ dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 	t = pow(2, -1);
 	dprintf(1, "\t%d -> %d\n", ft_pow(2, -1), t);
 
-	char k = 'd';
-	dprintf(1, "\t%c -> %d\n", k, 0xffffff80 & 128);
-
-
 
 /*
-**************************** ft_strdup *****************************************
+**************************** ft_bzero *****************************************
 */
+
+dprintf(1, "\n\x1b[32mTest for memset and bzero:\x1b[0m\n");
+	char str[5] = "hello";
+	dprintf(1, "\tstr -> %s\n", str);
+
+dprintf(1, "\n\x1b[32mft_bzero:\x1b[0m\n");
+	ft_bzero(str, 5);
+	dprintf(1, "\tft_bzero(str, 5) -> %s\n", str);
+
+dprintf(1, "\n\x1b[32mft_memset:\x1b[0m\n");
+	ft_memset(str, 'h', 5);
+	dprintf(1, "\tft_memset(str, 'h', 5) -> %s\n", str);
+
+
 dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
-//	char	*mydup;
-//	mydup = ft_strdup("hello");
-//	dprintf(1, "\t'%s' <- ft_strdup('hello')\n", mydup);
+	char	*str2;
+	str2 = ft_strdup(str);
+	dprintf(1, "\t'%s' <- str2 = ft_strdup(str)\n", str2);
 
 	return (0);
 }
