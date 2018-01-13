@@ -1,16 +1,16 @@
-global  ft_strcpy
-extern  ft_strlen
-extern	ft_memcpy
+global  _ft_strcpy
+extern  _ft_strlen
+extern	_ft_memcpy
 
 section .text
 
-ft_strcpy:				;char *stpcpy(char * dst, const char * src);
+_ft_strcpy:				;char *stpcpy(char * dst, const char * src);
 	push	rdi			; dst
 	push	rsi			; src
 	mov		rdi, rsi	; dst = src
-	call	ft_strlen
+	call	_ft_strlen
 	mov		rbx, rax
 	pop		rsi			; cleanup
 	pop		rdi
-	call	ft_memcpy
+	call	_ft_memcpy
 	ret

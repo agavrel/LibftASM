@@ -4,16 +4,16 @@
 section .data
 	msg db	"hello, world!"
 
-global ft_puts
+global _ft_puts
 
-extern puts
+extern _puts
 
 section .text
 
-ft_puts:
+_ft_puts:
 	push	rbp			; push a value to the stack
 	mov		rbp, rsp	;
-	call	puts		; call puts function
+	call	_puts		; call puts function
 	mov		rax, 0		; move 0 to rax
 	mov		rsp, rbp	;
 	pop		rbp			; restore registers to initial state

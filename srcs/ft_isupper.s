@@ -1,11 +1,11 @@
-global ft_isupper
+global _ft_isupper
 
-extern ft_isalpha
+extern _ft_isalpha
 
 section .text
 
-ft_isupper:			; int ft_isupper
-	call	ft_isalpha
+_ft_isupper:			; int ft_isupper
+	call	_ft_isalpha
 	test	eax, eax
 	jz		.end
 	and		edi, 0x20	; checks if 6th bit if ON

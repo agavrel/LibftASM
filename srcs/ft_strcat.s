@@ -1,8 +1,8 @@
-global	ft_strcat
+global	_ft_strcat
 
 section	.text
 
-ft_strcat:			; char *strcat(char *restrict s1, const char *restrict s2);
+_ft_strcat:			; char *strcat(char *restrict s1, const char *restrict s2);
 
 ; protection against null strings
 	cmp rdi, 0		; checks that rdi (s1) is different from NULL
