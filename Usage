@@ -1,1 +1,1 @@
-make && gcc libfts.a maintest.c && clear && ./a.out
+make test && ./maintest.out

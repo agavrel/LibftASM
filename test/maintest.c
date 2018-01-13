@@ -28,27 +28,6 @@ while (++tmp < 255)
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 }
 
-/*
-**************************** is_isupper ****************************************
-*/
-
-	dprintf(1, "\n\x1b[32mft_isupper:\x1b[0m\n");
-	dprintf(1, "\t%c -> %d\n", '!', ft_isupper('!'));
-	dprintf(1, "\t%c -> %d\n", '@', ft_isupper('@'));
-	dprintf(1, "\t%c -> %d\n", 'A', ft_isupper('A'));
-	dprintf(1, "\t%c -> %d\n", 'F', ft_isupper('F'));
-	dprintf(1, "\t%c -> %d\n", 'K', ft_isupper('K'));
-	dprintf(1, "\t%c -> %d\n", 'T', ft_isupper('T'));
-	dprintf(1, "\t%c -> %d\n", 'Z', ft_isupper('Z'));
-	dprintf(1, "\t%c -> %d\n", '[', ft_isupper('['));
-	dprintf(1, "\t%c -> %d\n", '`', ft_isupper('`'));
-	dprintf(1, "\t%c -> %d\n", 'a', ft_isupper('a'));
-	dprintf(1, "\t%c -> %d\n", 'f', ft_isupper('f'));
-	dprintf(1, "\t%c -> %d\n", 'k', ft_isupper('k'));
-	dprintf(1, "\t%c -> %d\n", 't', ft_isupper('t'));
-	dprintf(1, "\t%c -> %d\n", 'z', ft_isupper('z'));
-	dprintf(1, "\t%c -> %d\n", '{', ft_isupper('{'));
-	dprintf(1, "\t%c -> %d\n", '~', ft_isupper('~'));
 
 /*
 **************************** is_islower ****************************************
@@ -272,6 +251,44 @@ dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
 	char	*str2;
 	str2 = ft_strdup(str);
 	dprintf(1, "\t'%s' <- str2 = ft_strdup(str)\n", str2);
+
+
+/*
+**************************** is_isupper ****************************************
+*/
+
+	dprintf(1, "\n\x1b[32mft_isupper:\x1b[0m\n");
+
+	tmp = 31;
+	while (++tmp < 127)
+	{
+		dprintf(1, "\t%c -> %d", tmp, check = ft_isupper(tmp));
+		if ((check && (64 < tmp && tmp < 91)) || (!check && (65 > tmp || tmp > 90)))
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
+
+/*
+**************************** ft_rand *******************************************
+*/
+/*
+	int	rng[100];
+	ft_bzero(rng, 100);
+	tmp = -1;
+	int b;
+	while (++tmp < 50)
+	{
+		b = ft_rand();
+		rng[b] += 1;
+	}
+	tmp = -1;
+	while (++tmp < 100)
+	{
+		dprintf(1, "\tft_rand() value: %d count: %d\n", tmp, rng[tmp]);
+	}
+*/
+//	dprintf(1, "\tft_rand() -> %d", ft_rand());
 
 	return (0);
 }
