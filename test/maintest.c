@@ -304,11 +304,11 @@ while (++tmp < 127)
 
 dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
 
-	int g, int h;
+	int g; int h;
 	dprintf(1, "\tswap g = 50 and h = 30\n");
 	g = 30;
 	h = 50;
-	ft_swap(&g ,&h)
+	ft_swap(&g ,&h);
 	if (g == 50 && h == 30)
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
@@ -317,7 +317,7 @@ dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
 	dprintf(1, "\tswap g = 50 and h = 50\n");
 	g = 50;
 	h = 50;
-	ft_swap(&g ,&h)
+	ft_swap(&g ,&h);
 	if (g == 50 && h == 50)
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
@@ -326,7 +326,7 @@ dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
 	dprintf(1, "\tswap g = 0 and h = 50\n");
 	g = 0;
 	h = 50;
-	ft_swap(&g ,&h)
+	ft_swap(&g ,&h);
 	if (g == 50 && h == 0)
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
@@ -335,7 +335,7 @@ dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
 	dprintf(1, "\tswap g = 0 and h = 0\n");
 	g = 0;
 	h = 0;
-	ft_swap(&g ,&h)
+	ft_swap(&g ,&h);
 	if (g == 0 && h == 0)
 		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 	else
