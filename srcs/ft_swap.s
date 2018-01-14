@@ -1,13 +1,11 @@
-global _ft_swap
+global ft_swap
 
 section .text
 
-_ft_swap:			    ; int ft_swap(int *a, int *b) : swaps two integers' value
-    test   edi, esi     ; checks if eax (a) is equal to ebx (b)
-    je     .end         ; if so then we should avoid xoring a and b
-	xor    edi, esi     ; *a = *a + *b
-    xor    esi, edi     ; *b = *a - *b
-    xor    edi, esi     ; *a = *a - *b
-
-.end
-	ret
+ft_swap:			    ; int ft_swap(int *a, int *b);
+    mov    eax, [rdi]   ; tmp = *a;
+	xor    eax, [rsi]    ; *a = *a + *b
+    xor    [rsi], eax    ; *b = *a - *b
+    xor    eax, [rsi]    ; *a = *a - *b
+    mov    [rdi], eax   ; *a = tmp;
+    ret
