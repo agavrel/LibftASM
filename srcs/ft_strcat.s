@@ -2,14 +2,12 @@ global	_ft_strcat
 
 section	.text
 
-_ft_strcat:			; char *strcat(char *restrict s1, const char *restrict s2);
-
+_ft_strcat:				; char *strcat(char *restrict s1, const char *restrict s2);
 ; protection against null strings
-	cmp rdi, 0		; checks that rdi (s1) is different from NULL
-	je .end
-
-	cmp rsi, 0		; checks that rsi (s2) is different from NULL
-	je .end
+	test	rdi, rdi	; checks that rdi (s1) is different from NULL
+	jz		.end
+	test	rdi, rdi	; checks that rsi (s2) is different from NULL
+	jz		.end
 
 	mov r11, rdi	; save pointer to s1
 	cld				; direction flag -> inc

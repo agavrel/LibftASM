@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2018/01/13 17:19:34 by angavrel         ###   ########.fr        #
+#    Updated: 2018/01/14 19:35:23 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ ASM_FILES =			ft_isascii	\
 					ft_abs		\
 					ft_memset	\
 					ft_rand		\
+					ft_toupper_iburel	\
 					table_type
 
 

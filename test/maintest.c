@@ -12,6 +12,7 @@ int main(void)
 	int tmp;
 	int check;
 	int r; // random number
+	char c;
 	srand(time(NULL));
 /*
 **************************** is_ascii ******************************************
@@ -103,7 +104,7 @@ while (++tmp < 255)
 	while (++tmp < 127)
 	{
 		dprintf(1, "\t%c -> %d", tmp, check = ft_isalnum(tmp));
-		if (check)// && (ft_isalpha(tmp) || ft_isdigit(tmp)))
+		if (!check || (check && (ft_isalpha(tmp) || ft_isdigit(tmp))))
 			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
 		else
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
@@ -165,17 +166,6 @@ while (++tmp < 255)
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
-/*
-**************************** toupper *******************************************
-*/
-dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
-	char c = ft_toupper('a');
-
-	dprintf(1, "\t'%c' <- ft_toupper(\"a\")", c);
-	if (c == 'a' - 32)
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
 /*
 **************************** tolower *******************************************
@@ -253,6 +243,45 @@ dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
 	dprintf(1, "\t'%s' <- str2 = ft_strdup(str)\n", str2);
 
 
+
+/*
+**************************** ft_rand *******************************************
+*/
+
+	int	rng[100];
+	ft_bzero(rng, 100);
+	tmp = 0;
+	while (tmp < 100)
+	{
+		int b = ft_rand();
+		rng[b] += 1;
+		++tmp;
+	}
+	tmp = -1;
+	while (++tmp < 100)
+	{
+		dprintf(1, "\t[%d] %d x\n", tmp, rng[tmp]);
+	}
+
+//	dprintf(1, "\tft_rand() -> %d", ft_rand());
+
+
+/*
+**************************** toupper *******************************************
+*/
+
+dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
+
+tmp = 31;
+while (++tmp < 127)
+{
+	dprintf(1, "\t%c -> %c", tmp, check = ft_toupper(tmp));
+	if ((!ft_isalpha(tmp) && (check == tmp)) || (ft_isalpha(tmp) && ft_isupper(check)))
+		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+	else
+		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+}
+
 /*
 **************************** is_isupper ****************************************
 */
@@ -269,26 +298,6 @@ dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 	}
 
-/*
-**************************** ft_rand *******************************************
-*/
-/*
-	int	rng[100];
-	ft_bzero(rng, 100);
-	tmp = -1;
-	int b;
-	while (++tmp < 50)
-	{
-		b = ft_rand();
-		rng[b] += 1;
-	}
-	tmp = -1;
-	while (++tmp < 100)
-	{
-		dprintf(1, "\tft_rand() value: %d count: %d\n", tmp, rng[tmp]);
-	}
-*/
-//	dprintf(1, "\tft_rand() -> %d", ft_rand());
 
 	return (0);
 }
