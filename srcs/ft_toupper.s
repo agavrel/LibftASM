@@ -10,7 +10,7 @@ _ft_toupper:						; int	ft_toupper(int c);
 	and     al, 0b00000001			; use mask to check if it is an alpha as defined in table_type
 	mov		eax, edi				; set function's return value 'eax' equals to edi, which is int c passed
 	jz		.end					; if mask failed, zero flag is ON so just return, if not it will do below:
-	and		eax, 0xffffffdf			; 0xffffffdf - 0x20 : it clears the 6th bit which is the diff between lower and uppercase letters
+	xor		eax, 0x20				; it clears the 6th bit which is the diff between lower and uppercase letters
 
  .end:
  	ret

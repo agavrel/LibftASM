@@ -29,6 +29,7 @@ ASM_FILES =			ft_isascii	\
 					ft_abs		\
 					ft_memset	\
 					ft_rand		\
+					ft_swap		\
 					ft_toupper_iburel	\
 					table_type
 
