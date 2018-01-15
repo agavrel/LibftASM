@@ -1,18 +1,18 @@
 # LibftASM
 ## libc functions coded with assembly language
-Install NASM (1st line mac / 2nd for Linux):
+### Install NASM (1st line mac / 2nd for Linux):
 ```
 brew install nasm
 sudo apt-get install nasm
 ```
-Test library functions :
+### Test library functions
 ```
-make test
+bash Usage
+(equivalent to 'make test & ./maintest.aout')
 ```
-Some useful explanations on asm keywords:
+
+## Some useful explanations on asm keywords:
 ```
-https://c9x.me/x86
-https://en.wikipedia.org/wiki/X86_calling_conventions
 1) Arguments passed to the function are the following: 1st: rdi , 2nd: rsi, 3rd: rdx, 4th: rcx, 5th: r8, 6th: r9. If more params are passed they are stored on the Stack.
 2) Function's return value: ax for 16 bits, eax 32 bits, and rax 64 bits.
 3) EAX is the full 32-bit value with AX is the lower 16-bits, AL is the lower 8 bits, AH is the bits 8 through 15 (zero-based)
@@ -22,3 +22,13 @@ https://en.wikipedia.org/wiki/X86_calling_conventions
 7) MOVNTDQ : mov DQ (Double Quadword which means 2 x 4 x 2 = 16 octets = 128 bits) in the source operand (second operand) to the destination operand (first operand) using a non-temporal hint to prevent caching of the data during the write to memory.
 8) Copy memory address : lea rax, [rsi]: copy memory address from rsi to rax;
 ```
+
+## Miscelleaneous links (MUST READ / SEE)
+Instructions' List : https://c9x.me/x86
+Optimization: http://agner.org/optimize/
+About loops: https://stackoverflow.com/questions/47783926/why-are-loops-always-compiled-like-this
+Compiler Explorer (git / online version):
+https://github.com/mattgodbolt/compiler-explorer
+https://godbolt.org/
+[![Great video about compilers & asm](https://img.youtube.com/vi/bSkpMdDe4g4/0.jpg)](https://www.youtube.com/watch?v=bSkpMdDe4g4)
+https://en.wikipedia.org/wiki/X86_calling_conventions
