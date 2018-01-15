@@ -24,11 +24,11 @@ bash Usage
 ```
 
 ## Miscelleaneous links (MUST READ / SEE)
-Instructions' List : https://c9x.me/x86
-Optimization: http://agner.org/optimize/
-About loops: https://stackoverflow.com/questions/47783926/why-are-loops-always-compiled-like-this
+Instructions' List : https://c9x.me/x86<br />
+Optimization: http://agner.org/optimize/<br />
+About loops: https://stackoverflow.com/questions/47783926/why-are-loops-always-compiled-like-this<br />
 Compiler Explorer (git / online version):
 https://github.com/mattgodbolt/compiler-explorer
-https://godbolt.org/
-[![Great video about compilers & asm](https://img.youtube.com/vi/bSkpMdDe4g4/0.jpg)](https://www.youtube.com/watch?v=bSkpMdDe4g4)
-https://en.wikipedia.org/wiki/X86_calling_conventions
+https://godbolt.org/<br />
+[![Great video about compilers & asm](https://img.youtube.com/vi/bSkpMdDe4g4/0.jpg)](https://www.youtube.com/watch?v=bSkpMdDe4g4)<br />
+Calling Conventions : https://en.wikipedia.org/wiki/X86_calling_conventions<br />
