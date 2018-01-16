@@ -341,6 +341,10 @@ dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
+/*
+**************************** ft_collatz ****************************************
+*/
+	dprintf(1, "\tft_collatz %u\n", ft_collatz(16));
 
 	return (0);
 }
