@@ -23,6 +23,6 @@ void        *ft_memset(void *s, int c, size_t n);
 void        ft_bzero(void *s, size_t n);
 int         ft_rand(void);
 int			ft_toupper_iburel(int c);
-int         ft_swap(int *a, int *b);
+void        ft_swap(int *a, int *b);
 
 #endif

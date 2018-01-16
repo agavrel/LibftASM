@@ -7,7 +7,7 @@ section .text
 _ft_toupper_iburel:
     lea     rax, [rel table_type]
     mov     al, byte[rax + rdi]
-    and     eax, 0b00010000
+    and     al, 0b00010000
     mov     eax, edi
     jz      .nochange
 
