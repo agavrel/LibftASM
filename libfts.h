@@ -22,7 +22,6 @@ int         ft_abs(int x);
 void        *ft_memset(void *s, int c, size_t n);
 void        ft_bzero(void *s, size_t n);
 int         ft_rand(void);
-int			ft_toupper_iburel(int c);
 void        ft_swap(int *a, int *b);
 unsigned int        ft_collatz(int n);
 

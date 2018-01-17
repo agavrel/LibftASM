@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2018/01/16 22:27:50 by angavrel         ###   ########.fr        #
+#    Updated: 2018/01/17 21:57:52 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ ASM_FILES =			ft_isascii	\
 					ft_rand		\
 					ft_swap		\
 					ft_collatz	\
-					ft_toupper_iburel	\
 					table_type
 
 
@@ -51,7 +50,7 @@ ASM_OBJ :=			$(addprefix $(ASM_OBJ_DIR),$(ASM_OBJ))
 TEST =				maintest.out
 TEST_FILES =		maintest
 
-C_COMPILER =		clang -Wall -Werror -Wextra -O3
+C_COMPILER =		clang -Wall -Werror -Wextra -pedantic -O3
 TEST_DIR_NAME =		test
 TEST_DIR =			$(TEST_DIR_NAME)/
 TEST_OBJ :=			$(addsuffix .o,$(TEST_FILES))
