@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2018/01/17 21:57:52 by angavrel         ###   ########.fr        #
+#    Updated: 2018/01/20 22:12:45 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,8 @@ ASM_OBJ_DIR =		$(ASM_OBJ_DIR_NAME)/
 ASM_OBJ :=			$(addsuffix .o,$(ASM_FILES))
 ASM_OBJ :=			$(addprefix $(ASM_OBJ_DIR),$(ASM_OBJ))
 
-TEST =				maintest.out
-TEST_FILES =		maintest
+TEST =				$(TEST_FILES).out
+TEST_FILES =		speedtest
 
 C_COMPILER =		clang -Wall -Werror -Wextra -pedantic -O3
 TEST_DIR_NAME =		test

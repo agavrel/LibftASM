@@ -11,6 +11,21 @@ bash Usage
 (equivalent to 'make test & ./maintest.aout')
 ```
 
+### Use lldb to read registers
+```
+~/.lldbinit
+settings set target.x86-disassembly-flavor intel
+lldb a.out
+b main	; break main
+run
+b ft_islower ;
+c ; continue
+s ; step
+register read
+register read rflags
+```
+https://en.wikipedia.org/wiki/FLAGS_register
+
 ## Some useful explanations on asm keywords:
 ```
 1) Arguments passed to the function are the following: 1st: rdi , 2nd: rsi, 3rd: rdx, 4th: rcx, 5th: r8, 6th: r9. If more params are passed they are stored on the Stack.

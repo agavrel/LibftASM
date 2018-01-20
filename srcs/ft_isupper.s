@@ -13,6 +13,7 @@ _ft_isupper:							; int ft_isupper(int c);
 	jnz		.end						; if ZF is not set, jumps to .end to set return value to 0, else keep it as it was (1 if alpha, 0 otherwise).
 	ret
 
+ALIGN 8
 .end:
 	mov		eax, 0
 	ret

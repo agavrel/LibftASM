@@ -6,6 +6,7 @@
 #include <time.h>
 #include "libfts.h"
 #include <math.h>
+#include <ctype.h>
 
 int main(void)
 {
@@ -30,49 +31,6 @@ while (++tmp < 255)
 }
 
 
-/*
-**************************** is_islower ****************************************
-*/
-
-	dprintf(1, "\n\x1b[32mft_islower:\x1b[0m\n");
-	dprintf(1, "\t%c -> %d\n", '!', ft_islower('!'));
-	dprintf(1, "\t%c -> %d\n", '@', ft_islower('@'));
-	dprintf(1, "\t%c -> %d\n", 'A', ft_islower('A'));
-	dprintf(1, "\t%c -> %d\n", 'F', ft_islower('F'));
-	dprintf(1, "\t%c -> %d\n", 'K', ft_islower('K'));
-	dprintf(1, "\t%c -> %d\n", 'T', ft_islower('T'));
-	dprintf(1, "\t%c -> %d\n", 'Z', ft_islower('Z'));
-	dprintf(1, "\t%c -> %d\n", '[', ft_islower('['));
-	dprintf(1, "\t%c -> %d\n", '`', ft_islower('`'));
-	dprintf(1, "\t%c -> %d\n", 'a', ft_islower('a'));
-	dprintf(1, "\t%c -> %d\n", 'f', ft_islower('f'));
-	dprintf(1, "\t%c -> %d\n", 'k', ft_islower('k'));
-	dprintf(1, "\t%c -> %d\n", 't', ft_islower('t'));
-	dprintf(1, "\t%c -> %d\n", 'z', ft_islower('z'));
-	dprintf(1, "\t%c -> %d\n", '{', ft_islower('{'));
-	dprintf(1, "\t%c -> %d\n", '~', ft_islower('~'));
-
-/*
-**************************** is_alpha ******************************************
-*/
-
-	dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
-	dprintf(1, "\t%c -> %d\n", '!', ft_isalpha('!'));
-	dprintf(1, "\t%c -> %d\n", '@', ft_isalpha('@'));
-	dprintf(1, "\t%c -> %d\n", 'A', ft_isalpha('A'));
-	dprintf(1, "\t%c -> %d\n", 'F', ft_isalpha('F'));
-	dprintf(1, "\t%c -> %d\n", 'K', ft_isalpha('K'));
-	dprintf(1, "\t%c -> %d\n", 'T', ft_isalpha('T'));
-	dprintf(1, "\t%c -> %d\n", 'Z', ft_isalpha('Z'));
-	dprintf(1, "\t%c -> %d\n", '[', ft_isalpha('['));
-	dprintf(1, "\t%c -> %d\n", '`', ft_isalpha('`'));
-	dprintf(1, "\t%c -> %d\n", 'a', ft_isalpha('a'));
-	dprintf(1, "\t%c -> %d\n", 'f', ft_isalpha('f'));
-	dprintf(1, "\t%c -> %d\n", 'k', ft_isalpha('k'));
-	dprintf(1, "\t%c -> %d\n", 't', ft_isalpha('t'));
-	dprintf(1, "\t%c -> %d\n", 'z', ft_isalpha('z'));
-	dprintf(1, "\t%c -> %d\n", '{', ft_isalpha('{'));
-	dprintf(1, "\t%c -> %d\n", '~', ft_isalpha('~'));
 
 /*
 **************************** strlen ********************************************
@@ -345,6 +303,49 @@ dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
 **************************** ft_collatz ****************************************
 */
 	dprintf(1, "\tft_collatz %u\n", ft_collatz(16));
+
+
+/*
+**************************** is_alpha ******************************************
+*/
+
+dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
+
+	tmp = -1;
+	while (++tmp < 255)
+	{
+		dprintf(1, "\t%c -> %d", tmp, check = ft_isalpha(tmp));
+		if ((check && isalpha(tmp)) || (!check && !isalpha(tmp)))
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
+
+
+/*
+**************************** is_islower ****************************************
+*/
+
+	dprintf(1, "\n\x1b[32mft_islower:\x1b[0m\n");
+	dprintf(1, "\t%c -> %d\n", '!', ft_islower('!'));
+	dprintf(1, "\t%c -> %d\n", '@', ft_islower('@'));
+	dprintf(1, "\t%c -> %d\n", 'A', ft_islower('A'));
+	dprintf(1, "\t%c -> %d\n", 'F', ft_islower('F'));
+	dprintf(1, "\t%c -> %d\n", 'K', ft_islower('K'));
+	dprintf(1, "\t%c -> %d\n", 'T', ft_islower('T'));
+	dprintf(1, "\t%c -> %d\n", 'Z', ft_islower('Z'));
+	dprintf(1, "\t%c -> %d\n", '[', ft_islower('['));
+	dprintf(1, "\t%c -> %d\n", '`', ft_islower('`'));
+	dprintf(1, "\t%c -> %d\n", 'a', ft_islower('a'));
+	dprintf(1, "\t%c -> %d\n", 'f', ft_islower('f'));
+	dprintf(1, "\t%c -> %d\n", 'k', ft_islower('k'));
+	dprintf(1, "\t%c -> %d\n", 't', ft_islower('t'));
+	dprintf(1, "\t%c -> %d\n", 'z', ft_islower('z'));
+	dprintf(1, "\t%c -> %d\n", '{', ft_islower('{'));
+	dprintf(1, "\t%c -> %d\n", '~', ft_islower('~'));
+
+
+
 
 	return (0);
 }
