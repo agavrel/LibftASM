@@ -54,7 +54,7 @@ EBP: Stack frame base pointer (local variables in the function)
 
 #### C - EFLAGS register
 https://en.wikipedia.org/wiki/FLAGS_register
-```
+
 | Bit | Label  | Description  |
 | :-----: | :-: | :-: |
 | 0 | CF | Carry Flag: Set by arithmetic instructions which generate either a carry or borrow. Set when an operation generates a carry to or a borrow from a destination operand. |
@@ -80,7 +80,6 @@ https://en.wikipedia.org/wiki/FLAGS_register
 | 14 | NT | Nested Task Flag: Used in protected mode. When set, it indicates that one system task has invoked another via a CALL Instruction, rather than a JMP. |
 | :-----: | :-: | :-: |
 | 16 | RF | Resume Flag: Used by the debug registers DR6 and DR7. It enables you to turn off certain exceptions while debugging code. |
-```
 
 #### D - Bigger registers
 ```
