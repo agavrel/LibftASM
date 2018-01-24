@@ -99,3 +99,30 @@ CALL: It transfers control to a different function in a way that control can lat
 RET: It pops the top of the stack into EIP register.</br>
 MOV: Assign a value from a register, memory or immediate to a register or memory. It can't from memory to memory.</br>
 ```
+mov eax, ecx    ; move the value contained in ECX register to EAX, i,e : eax = ecx
+```
+MOVZX: move a value to bigger container and fill it will the value and 0 for the remaining bits.
+```
+movzx eax, al   ; move al to eax and fill it with 0
+```
+LEA: Copy memory address
+```
+lea rax, [rsi]  ; copy memory address from rsi to rax;
+```
+TEST: is basically an AND instruction that does not alter the dest.
+```
+test edx, edx is faster than cmp edx 0, it sets the zero flag to 1 if edx is null, else to 0
+```
+MOVNTDQ : mov DQ (Double Quadword which means 2 x 4 x 2 = 16 octets = 128 bits) in the source operand (second operand) to the destination operand (first operand) using a non-temporal hint to prevent caching of the data during the write to memory. 
+
+
+## 0x05 - Must-Read and Must-Watch links
+Please read very interesting PDFs in the resources folder of this git<br />
+Instructions' List : https://c9x.me/x86<br />
+Optimization: http://agner.org/optimize/<br />
+About loops: https://stackoverflow.com/questions/47783926/why-are-loops-always-compiled-like-this<br />
+Compiler Explorer (git / online version):
+https://github.com/mattgodbolt/compiler-explorer /
+https://godbolt.org/<br />
+[![Great video about compilers & asm](https://img.youtube.com/vi/bSkpMdDe4g4/0.jpg)](https://www.youtube.com/watch?v=bSkpMdDe4g4)<br />
+Calling Conventions : https://en.wikipedia.org/wiki/X86_calling_conventions<br />
