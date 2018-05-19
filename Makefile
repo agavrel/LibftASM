@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2018/01/21 00:00:33 by angavrel         ###   ########.fr        #
+#    Updated: 2018/05/20 00:07:19 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ ASM_FILES =			ft_isascii	\
 					ft_swap		\
 					ft_collatz	\
 					ft_memchr	\
+					ft_strncmp	\
 					table_type
 
 
@@ -49,7 +50,7 @@ ASM_OBJ :=			$(addsuffix .o,$(ASM_FILES))
 ASM_OBJ :=			$(addprefix $(ASM_OBJ_DIR),$(ASM_OBJ))
 
 TEST =				$(TEST_FILES).out
-TEST_FILES =		speedtest
+TEST_FILES =		maintest
 
 C_COMPILER =		clang -Wall -Werror -Wextra -pedantic -O3
 TEST_DIR_NAME =		test

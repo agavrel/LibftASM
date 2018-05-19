@@ -4,6 +4,7 @@ global _ft_strlen
 
 section .text
 
+ALIGN 16
 _ft_strlen:
 	mov			rax, rdi				; rdi c'est la str
 	pxor		xmm9, xmm9

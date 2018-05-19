@@ -5,8 +5,9 @@ global _ft_bzero
 
 section .text
 
+ALIGN 16
 _ft_bzero:							; void	ft_bzero(void *s, size_t n);
-	mov         rdx, rsi			
+	mov         rdx, rsi
 	pxor        xmm8, xmm8
 	jmp         _ft_memset.start
 

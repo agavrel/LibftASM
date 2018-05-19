@@ -13,7 +13,7 @@ int main(void)
 	int tmp;
 	int check;
 	int r; // random number
-	char c;
+
 	srand(time(NULL));
 /*
 **************************** is_ascii ******************************************
@@ -124,18 +124,6 @@ while (++tmp < 255)
 	else
 		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
-
-/*
-**************************** tolower *******************************************
-*/
-dprintf(1, "\n\x1b[32mft_tolower:\x1b[0m\n");
-	c = ft_tolower('B');
-
-	dprintf(1, "\t'%c' <- ft_tolower(\"B\")", c);
-	if (c == 'B' + 32)
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
 
 /*
@@ -322,30 +310,58 @@ dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
 	}
 
 
-/*
-**************************** is_islower ****************************************
+
+
+	/*
+	**************************** strncmp*******************************************
+	*/
+	dprintf(1, "\nft_strncmp\n\n");
+	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hella", 5), ft_strncmp("hello", "hella", 5));
+	dprintf(1, "\t%d -> %d\n", strncmp("hella", "hello", 5), ft_strncmp("hella", "hello", 5));
+
+	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 5), ft_strncmp("hello", "hello", 5));
+		dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 0), ft_strncmp("hello", "hello", 0));
+	dprintf(1, "\t%d -> %d\n", strncmp("hello", "", 5), ft_strncmp("hello", "", 5));
+	dprintf(1, "\t%d -> %d\n", strncmp("", "", 1), ft_strncmp("", "", 1));
+	dprintf(1, "\t%d -> %d\n", strncmp("helloa", "hello", 6), ft_strncmp("helloa", "hello", 6));
+
+	/*
+	**************************** is_islower ****************************************
+
+
+		dprintf(1, "\n\x1b[32mft_islower:\x1b[0m\n");
+		dprintf(1, "\t%c -> %d\n", '!', ft_islower('!'));
+		dprintf(1, "\t%c -> %d\n", '@', ft_islower('@'));
+		dprintf(1, "\t%c -> %d\n", 'A', ft_islower('A'));
+		dprintf(1, "\t%c -> %d\n", 'F', ft_islower('F'));
+		dprintf(1, "\t%c -> %d\n", 'K', ft_islower('K'));
+		dprintf(1, "\t%c -> %d\n", 'T', ft_islower('T'));
+		dprintf(1, "\t%c -> %d\n", 'Z', ft_islower('Z'));
+		dprintf(1, "\t%c -> %d\n", '[', ft_islower('['));
+		dprintf(1, "\t%c -> %d\n", '`', ft_islower('`'));
+		dprintf(1, "\t%c -> %d\n", 'a', ft_islower('a'));
+		dprintf(1, "\t%c -> %d\n", 'f', ft_islower('f'));
+		dprintf(1, "\t%c -> %d\n", 'k', ft_islower('k'));
+		dprintf(1, "\t%c -> %d\n", 't', ft_islower('t'));
+		dprintf(1, "\t%c -> %d\n", 'z', ft_islower('z'));
+		dprintf(1, "\t%c -> %d\n", '{', ft_islower('{'));
+		dprintf(1, "\t%c -> %d\n", '~', ft_islower('~'));
+
+
+	**************************** tolower *******************************************
+
+	dprintf(1, "\n\x1b[32mft_tolower:\x1b[0m\n");
+
+	tmp = 31;
+	while (++tmp < 127)
+	{
+		dprintf(1, "\t%c -> %c", tmp, check = ft_tolower(tmp));
+		if (tolower(tmp) == check)
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+	}
 */
-
-	dprintf(1, "\n\x1b[32mft_islower:\x1b[0m\n");
-	dprintf(1, "\t%c -> %d\n", '!', ft_islower('!'));
-	dprintf(1, "\t%c -> %d\n", '@', ft_islower('@'));
-	dprintf(1, "\t%c -> %d\n", 'A', ft_islower('A'));
-	dprintf(1, "\t%c -> %d\n", 'F', ft_islower('F'));
-	dprintf(1, "\t%c -> %d\n", 'K', ft_islower('K'));
-	dprintf(1, "\t%c -> %d\n", 'T', ft_islower('T'));
-	dprintf(1, "\t%c -> %d\n", 'Z', ft_islower('Z'));
-	dprintf(1, "\t%c -> %d\n", '[', ft_islower('['));
-	dprintf(1, "\t%c -> %d\n", '`', ft_islower('`'));
-	dprintf(1, "\t%c -> %d\n", 'a', ft_islower('a'));
-	dprintf(1, "\t%c -> %d\n", 'f', ft_islower('f'));
-	dprintf(1, "\t%c -> %d\n", 'k', ft_islower('k'));
-	dprintf(1, "\t%c -> %d\n", 't', ft_islower('t'));
-	dprintf(1, "\t%c -> %d\n", 'z', ft_islower('z'));
-	dprintf(1, "\t%c -> %d\n", '{', ft_islower('{'));
-	dprintf(1, "\t%c -> %d\n", '~', ft_islower('~'));
-
-
-
 
 	return (0);
 }

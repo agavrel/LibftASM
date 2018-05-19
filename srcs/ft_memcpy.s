@@ -6,6 +6,7 @@ global		_ft_memcpy
 
 section .text
 
+ALIGN 16
 _ft_memcpy:
 mov         rax, rdi
 
@@ -126,16 +127,8 @@ movdqa      [rcx], xmm8
 movdqa      [rcx + 0x10], xmm9
 movdqa      [rcx + 0x20], xmm10
 movdqa      [rcx + 0x30], xmm11
-movdqu      xmm8, [rsi + 0x40]
-movdqu      xmm9, [rsi + 0x50]
-movdqu      xmm10, [rsi + 0x60]
-movdqu      xmm11, [rsi + 0x70]
-movdqa      [rcx + 0x40], xmm8
-movdqa      [rcx + 0x50], xmm9
-movdqa      [rcx + 0x60], xmm10
-movdqa      [rcx + 0x70], xmm11
-add         rcx, 0x80
-add         rsi, 0x80
+add         rcx, 0x40
+add         rsi, 0x40
 cmp         rcx, rdi
 jne         .longloop
 
