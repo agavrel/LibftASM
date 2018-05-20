@@ -1,15 +1,17 @@
-; from sploadie git
-
-global _ft_cat
+%define SYSCALL(n)			0x2000000 | n
+%define READ				3
+%define WRITE				4
+%define BUFF_SIZE			0x100
 
 section .text
+	global _ft_cat
 
 section .data
-	buf: times 256 db 0
+	buf: times BUFF_SIZE db 0
 
 _ft_cat:
-	push rbp			; stack prep
-	mov rbp, rsp		;
+	push rbp						; setup stack frame
+	mov rbp, rsp
 
 	cmp edi, -1
 	je end
@@ -17,20 +19,23 @@ _ft_cat:
 	jg end
 
 read_loop:
-	push rdi			; read
+	push rdi
 	lea rsi, [rel buf]
-	mov rdx, 256
-	mov rax, 0x2000003
-	syscall
-	jc end_loop			; check for error
-	cmp rax, 0			; check for end
-	je end_loop
+	mov rdx, BUFF_SIZE
 
-	mov rdi, 1			; write
+	mov rax, SYSCALL(READ)			; call read, equivalent to {0x2000003}
+	syscall
+
+	test	rax, rax				; check for end
+	jz		end_loop
+
+	mov rdi, 1
 	lea rsi, [rel buf]
 	mov rdx, rax
-	mov rax, 0x2000004
+
+	mov rax, SYSCALL(WRITE)			; call write, equivalent to {0x2000004}
 	syscall
+
 	jc end_loop			; check for error
 	pop rdi
 	jmp read_loop
@@ -39,6 +44,5 @@ end_loop:
 	pop rdi
 
 end:
-	mov rsp, rbp		; stack cleanup
-	pop rbp				;
+	leave	; equivalent to {mov rsp, rbp} & {pop rbp},	restore stack frame
 	ret

@@ -3,10 +3,10 @@ global _ft_strncmp
 section .text
 
 _ft_strncmp:	; int	ft_strncmp(const char *s1, const char *s2, size_t n)
-	push	rbp
+	push	rbp				; setup stack frame
 	mov		rbp, rsp
 
-	xor		eax, eax  	 	; return value = 0
+	xor		eax, eax  	 	; set return value to 0
 
 	test	rdx, rdx		; protection: checks that n is different from 0
 	jz      .end

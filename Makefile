@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2018/05/20 00:07:19 by angavrel         ###   ########.fr        #
+#    Updated: 2018/05/20 20:47:07 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ ASM_FILES =			ft_isascii	\
 					ft_collatz	\
 					ft_memchr	\
 					ft_strncmp	\
+					ft_atoi		\
 					table_type
 
 

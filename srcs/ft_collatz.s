@@ -12,7 +12,7 @@ ALIGN 8
     inc     eax                 ; ++counter
     lea     edx, [edi * 3 + 1]  ; edx = 3*n+1
     shr     edi, 1              ; edi /= 2
-    cmovc   edi, edx            ; if CF eax = edx
+    cmovc   edi, edx            ; if not loosing last bit
     jnz     .seq                ; jmp if n<>1
 
 .res:

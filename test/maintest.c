@@ -136,25 +136,7 @@ dprintf(1, "\n\x1b[32mft_abs:\x1b[0m\n");
 
 
 /*
-**************************** ft_strcat *****************************************
-*/
-dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
-	char	mycat[64] = "a";
-
-	ft_strcat(mycat, " hello");
-	dprintf(1, "\t%s -> a hello\n", mycat);
-
-	ft_strcat(mycat, "!");
-	dprintf(1, "\t%s -> a hello!\n", mycat);
-
-	ft_strcat(mycat, "");
-	dprintf(1, "\t%s -> a hello!\n", mycat);
-
-	ft_strcat(mycat, " world..");
-	dprintf(1, "\t%s -> a hello! world.\n", mycat);
-
-/*
-**************************** ft_strcat *****************************************
+**************************** ft_strpow *****************************************
 */
 dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
 
@@ -363,6 +345,30 @@ dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 	}
 */
+/*
+**************************** ft_strcat *****************************************
+*/
+dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
+	char	mycat[64] = "a";
+
+	ft_strcat(mycat, " hello");
+	dprintf(1, "\t%s -> a hello\n", mycat);
+
+	ft_strcat(mycat, "!");
+	dprintf(1, "\t%s -> a hello!\n", mycat);
+
+	ft_strcat(mycat, "");
+	dprintf(1, "\t%s -> a hello!\n", mycat);
+
+	ft_strcat(mycat, " world..");
+	dprintf(1, "\t%s -> a hello! world..\n", mycat);
+
+/*
+**************************** ft_atoi *****************************************
+*/
+
+
+dprintf(1, "\t%d -> %d\n", atoi(" +54"), ft_atoi(" +54"));
 
 	return (0);
 }
