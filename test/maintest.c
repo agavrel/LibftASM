@@ -320,7 +320,8 @@ dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
 	dprintf(1, "\t%d -> %d\n", strncmp("hella", "hello", 5), ft_strncmp("hella", "hello", 5));
 
 	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 5), ft_strncmp("hello", "hello", 5));
-		dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 0), ft_strncmp("hello", "hello", 0));
+
+	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 0), ft_strncmp("hello", "hello", 0));
 	dprintf(1, "\t%d -> %d\n", strncmp("hello", "", 5), ft_strncmp("hello", "", 5));
 	dprintf(1, "\t%d -> %d\n", strncmp("", "", 1), ft_strncmp("", "", 1));
 	dprintf(1, "\t%d -> %d\n", strncmp("helloa", "hello", 6), ft_strncmp("helloa", "hello", 6));
