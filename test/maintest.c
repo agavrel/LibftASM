@@ -368,7 +368,12 @@ dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
 */
 
 
-dprintf(1, "\t%d -> %d\n", atoi(" +54"), ft_atoi(" +54"));
+dprintf(1, "\t%d -> %d\n", atoi("   -54"), ft_atoi("   -54"));
+dprintf(1, "\t%d -> %d\n", atoi("   -+54"), ft_atoi("   +-54"));
+dprintf(1, "\t%d -> %d\n", atoi("   +-54"), ft_atoi("   -+54"));
+dprintf(1, "\t%d -> %d\n", atoi("   -,54"), ft_atoi("   -,54"));
+dprintf(1, "\t%d -> %d\n", atoi("   -2147483648"), ft_atoi("   -2147483648"));
+dprintf(1, "\t%d -> %d\n", atoi("   +2147483649"), ft_atoi("   +2147483649"));
 
 	return (0);
 }

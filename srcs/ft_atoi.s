@@ -1,4 +1,4 @@
-global _ft_atoi
+global _ft_atoi				; similar to original atoi except it does not overflow, return 0 instead
 
 section .text
 
@@ -6,8 +6,9 @@ _ft_atoi:					; int ft_atoi(const char *str);
 	push	rbp				; setup stack frame
 	mov		rbp, rsp
 
-	mov		rax, 0			; default return value
-	mov		rdx, 1			; sign
+	xor		rax, rax		; default return value
+	mov		rsi, 1			; sign
+	xor		rcx, rcx		; used to handle sign later
 
 .while_sp:
 	mov		dl, BYTE[rdi]
@@ -17,12 +18,19 @@ _ft_atoi:					; int ft_atoi(const char *str);
 	sub 	dl, 9			; test characters 9 to 13
 	cmp 	dl, (13 - 9)
 	jle		.while_sp
+	dec		rdi
 
+.sign_handler:
 	mov		dl, BYTE[rdi]
-	cmp		dl, 0x2b		; +
-;	sete	edx, 1			; useless in fact
-	cmp		dl, 0x2d		; -
-;	cmove	edx, -1			; set sign to negative
+
+	cmp		dl, 0x2b		; 0x2b = '+'
+	sete	cl				; used to increase pointer
+
+	cmp		dl, 0x2d		; 0x2d = '-'
+	cmove	rsi, rax		; set sign to negative
+	sete	cl
+
+	add		rdi, rcx		; increase pointer
 
 .while_num:
 	mov		dl, BYTE[rdi]
@@ -40,5 +48,13 @@ _ft_atoi:					; int ft_atoi(const char *str);
 	jmp		.while_num		; keep looping
 
 .end:
+	test	rsi, rsi		; test if sign is positive (1) or negative (0)
+	jz		.negate
+
+	leave					; clear stack frame
+	ret
+
+.negate:
+	neg		eax;			; if negative reverse result
 	leave					; clear stack frame
 	ret
