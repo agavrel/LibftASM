@@ -119,7 +119,7 @@ _main:
 
 ### General Purpose Registers
 
-![General-Purpose Registers](./literature/registers.png)
+![General-Purpose Registers](./resources/registers.png)
 
 **Some registers values are preserved across function calls !**
 
