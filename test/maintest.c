@@ -7,6 +7,7 @@
 #include "libfts.h"
 #include <math.h>
 #include <ctype.h>
+#include <stdbool.h>
 
 #define BOLD	"\x1B[1m"
 #define BLINK	"\x1B[5m"
@@ -21,12 +22,105 @@
 #define KO		RED BOLD BLINK "KO" NC
 #define OK		GRN BOLD "OK" NC
 
-void	ft_assert(unsigned long a, unsigned long b)
+bool	ft_assert(const unsigned long a, const unsigned long b)
 {
 	if (a == b)
+	{
 		dprintf(1, OK" \t%lu -> %lu\n", a, b);
-	else
-		dprintf(1, KO" \t%lu -> %lu\n", a, b);
+		return true;
+	}
+	dprintf(1, KO" \t%lu -> %lu\n", a, b);
+	return false;
+}
+
+bool	ft_assert_str(const char *a, const char *b)
+{
+	if (!strcmp(a, b))
+	{
+		dprintf(1, OK" \t%s -> %s\n", a, b);
+		return true;
+	}
+	dprintf(1, KO" \t%s -> %s\n", a, b);
+	return false;
+}
+
+/*
+**************************** ft_strncmp *****************************************
+*/
+
+void ft_strncmp_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	cnt += ft_assert(strncmp("hello", "hella", 5), ft_strncmp("hello", "hella", 5));
+	cnt += ft_assert(strncmp("hella", "hello", 5), ft_strncmp("hella", "hello", 5));
+	cnt += ft_assert(strncmp("hello", "hello", 5), ft_strncmp("hello", "hello", 5));
+	cnt += ft_assert(strncmp("hello", "hello", 0), ft_strncmp("hello", "hello", 0));
+	cnt += ft_assert(strncmp("hello", "", 5), ft_strncmp("hello", "", 5));
+	cnt += ft_assert(strncmp("", "", 1), ft_strncmp("", "", 1));
+	cnt += ft_assert(strncmp("helloa", "hello", 6), ft_strncmp("helloa", "hello", 6));
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 7);
+}
+
+/*
+**************************** ft_strcat *****************************************
+*/
+void ft_strcat_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+	char	mycat[64] = "a";
+	char	*str = malloc(64 * sizeof(char));;
+
+	ft_strcat(mycat, " hello");
+	strcpy(str, mycat);
+	cnt += ft_assert_str("a hello", str);
+
+	ft_strcat(mycat, "!");
+	strcpy(str, mycat);
+	cnt += ft_assert_str("a hello!", str);
+
+	ft_strcat(mycat, "");
+	strcpy(str, mycat);
+	cnt += ft_assert_str("a hello!", str);
+
+	ft_strcat(mycat, " world..");
+	strcpy(str, mycat);
+	cnt += ft_assert_str("a hello! world..", str);
+
+	free(str);
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 4);
+}
+
+/*
+**************************** ft_atoi *****************************************
+*/
+
+void ft_atoi_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	cnt += ft_assert(atoi("   -54"), ft_atoi("   -54"));
+	cnt += ft_assert(atoi("   -+54"), ft_atoi("   +-54"));
+	cnt += ft_assert(atoi("   +-54"), ft_atoi("   -+54"));
+	cnt += ft_assert(atoi("   -,54"), ft_atoi("   -,54"));
+	cnt += ft_assert(atoi("   -2147483648"), ft_atoi("   -2147483648"));
+	cnt += ft_assert(atoi("   +2147483649"), ft_atoi("   +2147483649"));
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 6);
+}
+/*
+**************************** ft_align *****************************************
+*/
+void ft_align_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	cnt += ft_assert(32, ft_align(27, 31));
+	cnt += ft_assert(0, ft_align(0, 31));
+	cnt += ft_assert(32, ft_align(31, 31));
+	cnt += ft_assert(32, ft_align(32, 31));
+	cnt += ft_assert(64, ft_align(33, 31));
+	cnt += ft_assert(0xFFF + 1, ft_align(0x463, 0xFFF));
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 6);
 }
 
 int main(void)
@@ -313,21 +407,8 @@ dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
 	}
 
 
+	ft_strncmp_test();
 
-
-	/*
-	**************************** strncmp*******************************************
-	*/
-	dprintf(1, "\nft_strncmp\n\n");
-	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hella", 5), ft_strncmp("hello", "hella", 5));
-	dprintf(1, "\t%d -> %d\n", strncmp("hella", "hello", 5), ft_strncmp("hella", "hello", 5));
-
-	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 5), ft_strncmp("hello", "hello", 5));
-
-	dprintf(1, "\t%d -> %d\n", strncmp("hello", "hello", 0), ft_strncmp("hello", "hello", 0));
-	dprintf(1, "\t%d -> %d\n", strncmp("hello", "", 5), ft_strncmp("hello", "", 5));
-	dprintf(1, "\t%d -> %d\n", strncmp("", "", 1), ft_strncmp("", "", 1));
-	dprintf(1, "\t%d -> %d\n", strncmp("helloa", "hello", 6), ft_strncmp("helloa", "hello", 6));
 
 	/*
 	**************************** is_islower ****************************************
@@ -366,49 +447,9 @@ dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 	}
 */
-/*
-**************************** ft_strcat *****************************************
-*/
-dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
-	char	mycat[64] = "a";
-
-	ft_strcat(mycat, " hello");
-	dprintf(1, "\t%s -> a hello\n", mycat);
-
-	ft_strcat(mycat, "!");
-	dprintf(1, "\t%s -> a hello!\n", mycat);
-
-	ft_strcat(mycat, "");
-	dprintf(1, "\t%s -> a hello!\n", mycat);
-
-	ft_strcat(mycat, " world..");
-	dprintf(1, "\t%s -> a hello! world..\n", mycat);
-
-/*
-**************************** ft_atoi *****************************************
-*/
-
-dprintf(1, "\n\x1b[32mft_atoi:\x1b[0m\n");
-
-dprintf(1, "\t%d -> %d\n", atoi("   -54"), ft_atoi("   -54"));
-dprintf(1, "\t%d -> %d\n", atoi("   -+54"), ft_atoi("   +-54"));
-dprintf(1, "\t%d -> %d\n", atoi("   +-54"), ft_atoi("   -+54"));
-dprintf(1, "\t%d -> %d\n", atoi("   -,54"), ft_atoi("   -,54"));
-dprintf(1, "\t%d -> %d\n", atoi("   -2147483648"), ft_atoi("   -2147483648"));
-dprintf(1, "\t%d -> %d\n", atoi("   +2147483649"), ft_atoi("   +2147483649"));
-
-/*
-**************************** ft_align *****************************************
-*/
-dprintf(1, BOLD CYN"\nft_align:\n"NC);
-
-	ft_assert(32, ft_align(27, 31));
-	ft_assert(0, ft_align(0, 31));
-	ft_assert(32, ft_align(31, 31));
-	ft_assert(32, ft_align(32, 31));
-	ft_assert(64, ft_align(33, 31));
-	ft_assert(0xFFF + 1, ft_align(0x463, 0xFFF));
-
+	ft_strcat_test();
+	ft_atoi_test();
+	ft_align_test();
 	dprintf(1, "\n");
 	return (0);
 }
