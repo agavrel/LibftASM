@@ -8,6 +8,27 @@
 #include <math.h>
 #include <ctype.h>
 
+#define BOLD	"\x1B[1m"
+#define BLINK	"\x1B[5m"
+#define RED   "\x1B[31m"
+#define GRN   "\x1B[32m"
+#define YEL   "\x1B[33m"
+#define BLU   "\x1B[34m"
+#define MAG   "\x1B[35m"
+#define CYN   "\x1B[36m"
+#define WHT   "\x1B[37m"
+#define NC		"\x1B[0m"
+#define KO		RED BOLD BLINK "KO" NC
+#define OK		GRN BOLD "OK" NC
+
+void	ft_assert(unsigned long a, unsigned long b)
+{
+	if (a == b)
+		dprintf(1, OK" \t%lu -> %lu\n", a, b);
+	else
+		dprintf(1, KO" \t%lu -> %lu\n", a, b);
+}
+
 int main(void)
 {
 	int tmp;
@@ -367,6 +388,7 @@ dprintf(1, "\n\x1b[32mft_strcat:\x1b[0m\n");
 **************************** ft_atoi *****************************************
 */
 
+dprintf(1, "\n\x1b[32mft_atoi:\x1b[0m\n");
 
 dprintf(1, "\t%d -> %d\n", atoi("   -54"), ft_atoi("   -54"));
 dprintf(1, "\t%d -> %d\n", atoi("   -+54"), ft_atoi("   +-54"));
@@ -375,5 +397,18 @@ dprintf(1, "\t%d -> %d\n", atoi("   -,54"), ft_atoi("   -,54"));
 dprintf(1, "\t%d -> %d\n", atoi("   -2147483648"), ft_atoi("   -2147483648"));
 dprintf(1, "\t%d -> %d\n", atoi("   +2147483649"), ft_atoi("   +2147483649"));
 
+/*
+**************************** ft_align *****************************************
+*/
+dprintf(1, BOLD CYN"\nft_align:\n"NC);
+
+	ft_assert(32, ft_align(27, 31));
+	ft_assert(0, ft_align(0, 31));
+	ft_assert(32, ft_align(31, 31));
+	ft_assert(32, ft_align(32, 31));
+	ft_assert(64, ft_align(33, 31));
+	ft_assert(0xFFF + 1, ft_align(0x463, 0xFFF));
+
+	dprintf(1, "\n");
 	return (0);
 }

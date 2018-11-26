@@ -27,5 +27,6 @@ unsigned int	ft_collatz(int n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
+unsigned long ft_align(const unsigned long size, unsigned long mask);
 
 #endif

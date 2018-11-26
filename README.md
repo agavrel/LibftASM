@@ -1,9 +1,12 @@
 # LibftASM - Libc functions (re)coded with assembly language optimizations
 ## 0x01 - Install, run and debugging
-### I - Install NASM (1st line mac / 2nd for Linux):
+### I - Install Brew, then NASM:
 ```
-brew install nasm
-sudo apt-get install nasm
+Mac:
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install nasm
+Linux:
+	sudo apt-get install nasm
 ```
 ### II - Test library functions
 ```

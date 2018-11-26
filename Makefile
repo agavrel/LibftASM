@@ -34,13 +34,14 @@ ASM_FILES =			ft_isascii	\
 					ft_memchr	\
 					ft_strncmp	\
 					ft_atoi		\
+					ft_align \
 					table_type
 
 
 OS := $(shell uname)
 
 ifeq ($(OS), Darwin)
-ASM_COMPILER =		~/.brew/bin/nasm -f macho64 -g
+ASM_COMPILER =		nasm -f macho64 -g#~/.brew/bin/nasm -f macho64 -g
 else
 ASM_COMPILER =		nasm -f elf64 -g
 endif
