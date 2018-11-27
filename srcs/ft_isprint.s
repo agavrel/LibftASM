@@ -11,4 +11,5 @@ _ft_isprint:
     mov     al, byte[rax + rdi]
     and     al, 0b00001000
     movzx   eax, al
+    shr      al, 3
     ret

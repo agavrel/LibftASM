@@ -33,6 +33,18 @@ bool	ft_assert(const unsigned long a, const unsigned long b)
 	return false;
 }
 
+bool	ft_assert_int(const int i, const int a, const int b, const bool display)
+{
+	if (a == b)
+	{
+		if (display)
+			dprintf(1, OK" \t[%d] %d -> %d\n", i, a, b);
+		return true;
+	}
+	dprintf(1, KO" \t[%d] %d -> %d\n", i, a, b);
+	return false;
+}
+
 bool	ft_assert_str(const char *a, const char *b)
 {
 	if (!strcmp(a, b))
@@ -42,6 +54,51 @@ bool	ft_assert_str(const char *a, const char *b)
 	}
 	dprintf(1, KO" \t%s -> %s\n", a, b);
 	return false;
+}
+
+/*
+**************************** is_alpha ******************************************
+*/
+
+void ft_isalpha_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, isalpha(i), ft_isalpha(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
+}
+
+
+/*
+**************************** isdigit *******************************************
+*/
+void ft_isdigit_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, isdigit(i), ft_isdigit(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
+}
+
+/*
+**************************** isalnum *******************************************
+*/
+
+void ft_isalnum_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, isalnum(i), ft_isalnum(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
 }
 
 /*
@@ -92,6 +149,21 @@ void ft_strcat_test(void)	{
 }
 
 /*
+**************************** ft_pow *****************************************
+*/
+
+void ft_pow_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	cnt += ft_assert_int(1, pow(2, 3), ft_pow(2, 3), false);
+	cnt += ft_assert_int(2, pow(2, 0), ft_pow(2, 0), false);
+	cnt += ft_assert_int(3, pow(2, -1), ft_pow(2, -1), false);
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 3);
+}
+
+/*
 **************************** ft_atoi *****************************************
 */
 
@@ -99,12 +171,12 @@ void ft_atoi_test(void)	{
 	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
 	int cnt = 0;
 
-	cnt += ft_assert(atoi("   -54"), ft_atoi("   -54"));
-	cnt += ft_assert(atoi("   -+54"), ft_atoi("   +-54"));
-	cnt += ft_assert(atoi("   +-54"), ft_atoi("   -+54"));
-	cnt += ft_assert(atoi("   -,54"), ft_atoi("   -,54"));
-	cnt += ft_assert(atoi("   -2147483648"), ft_atoi("   -2147483648"));
-	cnt += ft_assert(atoi("   +2147483649"), ft_atoi("   +2147483649"));
+	cnt += ft_assert_int(1, atoi("   -54"), ft_atoi("   -54"), false);
+	cnt += ft_assert_int(2, atoi("   -+54"), ft_atoi("   +-54"), false);
+	cnt += ft_assert_int(3, atoi("   +-54"), ft_atoi("   -+54"), false);
+	cnt += ft_assert_int(4, atoi("   -,54"), ft_atoi("   -,54"), false);
+	cnt += ft_assert_int(5, atoi("   -2147483648"), ft_atoi("   -2147483648"), false);
+	cnt += ft_assert_int(6, atoi("   +2147483649"), ft_atoi("   +2147483649"), false);
 	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 6);
 }
 /*
@@ -123,105 +195,164 @@ void ft_align_test(void)	{
 	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 6);
 }
 
-int main(void)
-{
-	int tmp;
-	int check;
-	int r; // random number
-
-	srand(time(NULL));
 /*
 **************************** is_ascii ******************************************
 */
 
-dprintf(1, "\n\x1b[32mft_isascii:\x1b[0m\n");
-tmp = -1;
-while (++tmp < 255)
-{
-	dprintf(1, "\t%c -> %d", tmp, check = ft_isascii(tmp));
-	if ((check && (-1 < tmp && tmp < 128)) || (!check && (0 > tmp || tmp > 127)))
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+void ft_isascii_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, isascii(i), ft_isascii(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
+}
+
+/*
+**************************** is_isupper ****************************************
+*/
+
+void ft_isupper_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, isupper(i), ft_isupper(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
 }
 
 
+/*
+**************************** is_isupper ****************************************
+*/
+
+void ft_isprint_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, isprint(i), ft_isprint(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
+}
 
 /*
 **************************** strlen ********************************************
 */
-	dprintf(1, "\n\x1b[32mft_strlen:\x1b[0m\n");
-	dprintf(1, "\t%s -> %d\n", "hello", ft_strlen("hello"));
-	dprintf(1, "\t%s -> %d\n", "{empty}", ft_strlen(""));
-	dprintf(1, "\t%s -> %d\n", "9 bytes", ft_strlen("123456789"));
+void ft_strlen_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+	char str[4][64] = {"hello", "", "123456789", "congratulation"};
+	char	*s = malloc(64 * sizeof(char));;
 
-/*
-**************************** isdigit *******************************************
-*/
-	dprintf(1, "\n\x1b[32mft_isdigit:\x1b[0m\n");
-	tmp = -1;
-	while (++tmp < 127)
+	for (int i = 0; i < 4; i++)
 	{
-		dprintf(1, "\t%c -> %d", tmp, check = ft_isdigit(tmp));
-		if ((check && (47 < tmp && tmp < 58)) || (!check && (48 > tmp || tmp > 57)))
-			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-		else
-			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+		strcpy(s, str[i]);
+		cnt += ft_assert_int(i, strlen(s), ft_strlen(s), false);
 	}
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 4);
+	free(s);
+}
 
-/*
-**************************** isalnum *******************************************
-*/
-	dprintf(1, "\n\x1b[32mft_isalnum:\x1b[0m\n");
-	tmp = 32 - 1;
-	while (++tmp < 127)
-	{
-		dprintf(1, "\t%c -> %d", tmp, check = ft_isalnum(tmp));
-		if (!check || (check && (ft_isalpha(tmp) || ft_isdigit(tmp))))
-			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-		else
-			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-	}
-
-/*
-**************************** isprint *******************************************
-*/
-	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
-	tmp = -1;
-	while (++tmp < 128)
-	{
-		dprintf(1, "\t%c -> %d", tmp, check = ft_isprint(tmp));
-		if ((check && (31 < tmp && tmp < 127)) || (!check && (32 > tmp || tmp > 126)))
-			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-		else
-			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-	}
-
-/*
-**************************** isalnum *******************************************
-*/
-	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
-	tmp = 10;
-	while (tmp--)
-	{
-		r = rand() % 128;
-		dprintf(1, "\t%c -> %d", r, check = ft_isprint(r));
-		if ((check && (31 < r && r < 127)) || (!check && (32 > r || r > 126)))
-			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-		else
-			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-	}
 
 /*
 **************************** putstr ********************************************
 */
-	dprintf(1, "\n\x1b[32mft_isprint:\x1b[0m\n");
-	tmp = 5;
-	const char *mystring[] = {"Hello", "world", "42", "rocks", "omg"};
-	while (tmp--)
+
+void ft_putstr_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 5;
+	char str[5][64] = {"Hello", "world", "42", "rocks", "omg"};
+
+	for (int i = 0; i < 5; i++)
 	{
-		ft_puts((char *)mystring[rand() % 5]);
+		ft_puts(str[i]);
 	}
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 5);
+}
+
+
+/*
+**************************** ft_swap ****************************************
+*/
+
+void ft_swap_test(void) {
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+
+		int g; int h;
+		dprintf(1, "\tswap g = 50 and h = 30\n");
+		g = 30;
+		h = 50;
+		ft_swap(&g ,&h);
+		if (g == 50 && h == 30)
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
+		dprintf(1, "\tswap g = 50 and h = 50\n");
+		g = 50;
+		h = 50;
+		ft_swap(&g ,&h);
+		if (g == 50 && h == 50)
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
+		dprintf(1, "\tswap g = 0 and h = 50\n");
+		g = 0;
+		h = 50;
+		ft_swap(&g ,&h);
+		if (g == 50 && h == 0)
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+
+		dprintf(1, "\tswap g = 0 and h = 0\n");
+		g = 0;
+		h = 0;
+		ft_swap(&g ,&h);
+		if (g == 0 && h == 0)
+			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
+		else
+			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
+}
+
+
+/*
+**************************** toupper *******************************************
+*/
+
+void ft_toupper_test(void)	{
+	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
+	int cnt = 0;
+
+	for (int i = 0; i < 256; i++)
+		cnt += ft_assert_int(i, toupper(i), ft_toupper(i), false);
+
+
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 256);
+}
+
+/*
+**************************** MAIN ******************************************
+*/
+
+int main(void)
+{
+	int tmp;
+
+	ft_isascii_test();
+	ft_isprint_test();
+	ft_isupper_test();
+	ft_strlen_test();
+	ft_swap_test();
+	ft_putstr_test();
+	ft_toupper_test();
 
 /*
 **************************** memcpy ********************************************
@@ -250,17 +381,6 @@ dprintf(1, "\n\x1b[32mft_abs:\x1b[0m\n");
 
 
 
-/*
-**************************** ft_strpow *****************************************
-*/
-dprintf(1, "\n\x1b[32mft_pow:\x1b[0m\n");
-
-	t = pow(2, 3);
-	dprintf(1, "\t%d -> %d\n", ft_pow(2, 3), t);
-	t = pow(2, 0);
-	dprintf(1, "\t%d -> %d\n", ft_pow(2, 0), t);
-	t = pow(2, -1);
-	dprintf(1, "\t%d -> %d\n", ft_pow(2, -1), t);
 
 
 /*
@@ -309,105 +429,11 @@ dprintf(1, "\n\x1b[32mft_strdup:\x1b[0m\n");
 //	dprintf(1, "\tft_rand() -> %d", ft_rand());
 
 
-/*
-**************************** toupper *******************************************
-*/
-
-dprintf(1, "\n\x1b[32mft_toupper:\x1b[0m\n");
-
-tmp = 31;
-while (++tmp < 127)
-{
-	dprintf(1, "\t%c -> %c", tmp, check = ft_toupper(tmp));
-	if ((!ft_isalpha(tmp) && (check == tmp)) || (ft_isalpha(tmp) && ft_isupper(check)))
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-}
-
-/*
-**************************** is_isupper ****************************************
-*/
-
-	dprintf(1, "\n\x1b[32mft_isupper:\x1b[0m\n");
-
-	tmp = 31;
-	while (++tmp < 127)
-	{
-		dprintf(1, "\t%c -> %d", tmp, check = ft_isupper(tmp));
-		if ((check && (64 < tmp && tmp < 91)) || (!check && (65 > tmp || tmp > 90)))
-			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-		else
-			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-	}
-
-/*
-**************************** ft_swap ****************************************
-*/
-
-dprintf(1, "\n\x1b[32mft_swap:\x1b[0m\n");
-
-	int g; int h;
-	dprintf(1, "\tswap g = 50 and h = 30\n");
-	g = 30;
-	h = 50;
-	ft_swap(&g ,&h);
-	if (g == 50 && h == 30)
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-
-	dprintf(1, "\tswap g = 50 and h = 50\n");
-	g = 50;
-	h = 50;
-	ft_swap(&g ,&h);
-	if (g == 50 && h == 50)
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-
-	dprintf(1, "\tswap g = 0 and h = 50\n");
-	g = 0;
-	h = 50;
-	ft_swap(&g ,&h);
-	if (g == 50 && h == 0)
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-
-	dprintf(1, "\tswap g = 0 and h = 0\n");
-	g = 0;
-	h = 0;
-	ft_swap(&g ,&h);
-	if (g == 0 && h == 0)
-		dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-	else
-		dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 
 /*
 **************************** ft_collatz ****************************************
 */
 	dprintf(1, "\tft_collatz %u\n", ft_collatz(16));
-
-
-/*
-**************************** is_alpha ******************************************
-*/
-
-dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
-
-	tmp = -1;
-	while (++tmp < 255)
-	{
-		dprintf(1, "\t%c -> %d", tmp, check = ft_isalpha(tmp));
-		if ((check && isalpha(tmp)) || (!check && !isalpha(tmp)))
-			dprintf(1, "\t\x1b[32mOK\x1b[0m\n");
-		else
-			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
-	}
-
-
-	ft_strncmp_test();
 
 
 	/*
@@ -447,9 +473,15 @@ dprintf(1, "\n\x1b[32mft_isalpha:\x1b[0m\n");
 			dprintf(1, "\t\x1b[31mKO\x1b[0m\n");
 	}
 */
+ft_strncmp_test();
+
+	ft_isalnum_test();
+	ft_isdigit_test();
+	ft_isalpha_test();
 	ft_strcat_test();
 	ft_atoi_test();
 	ft_align_test();
+	ft_pow_test();
 	dprintf(1, "\n");
 	return (0);
 }
