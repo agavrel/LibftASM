@@ -277,15 +277,15 @@ void ft_isprint_test(void)	{
 void ft_strlen_test(void)	{
 	dprintf(1, BOLD CYN"\n~ %s ~\n"NC, __func__);
 	int cnt = 0;
-	char str[4][64] = {"hello", "", "123456789", "congratulation"};
-	char	*s = malloc(64 * sizeof(char));;
+	char str[5][256] = {"hello", "", "123456789", "congratulation", "gsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsggsrgrgsrgrsgrsg"};
+	char	*s = malloc(256 * sizeof(char));;
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		strcpy(s, str[i]);
 		cnt += ft_assert_int(i, strlen(s), ft_strlen(s));
 	}
-	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 4);
+	dprintf(1, BOLD MAG"\t\t%.1f%% Tests Passed\n"NC, 100 * (double)cnt / 5);
 	free(s);
 }
 
@@ -516,30 +516,38 @@ void ft_collatz_test(void)	{
 
 int main(void)
 {
+// 1st mandatory part
+	ft_bzero_test();
+	ft_strcat_test();
+	ft_isalpha_test();
+	ft_isdigit_test();
+	ft_isalnum_test();
 	ft_isascii_test();
 	ft_isprint_test();
-	ft_isupper_test();
-	ft_islower_test();
-	ft_strlen_test();
-	ft_swap_test();
-	ft_putstr_test();
 	ft_toupper_test();
 	ft_tolower_test();
-	ft_abs_test();
-	ft_memcpy_test();
+	ft_putstr_test();
+
+// optional functions
+	ft_isupper_test();
+	ft_islower_test();
+	ft_swap_test();
 	ft_strncmp_test();
-	ft_isalnum_test();
-	ft_isdigit_test();
-	ft_isalpha_test();
-	ft_strcat_test();
-	ft_bzero_test();
-	ft_memset_test();
-	ft_strdup_test();
 	ft_atoi_test();
+	ft_abs_test();
 	ft_align_test();
 	ft_pow_test();
 	ft_collatz_test();
-	ft_cat(0);
+
+// 2nd mandatory part
+	ft_strlen_test();
+	ft_memset_test();
+	ft_memcpy_test();
+	ft_strdup_test();
+
+// final mandatory function
+	//ft_cat(0);
+
 	dprintf(1, "\n");
 	return (0);
 }
