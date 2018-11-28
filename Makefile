@@ -35,6 +35,7 @@ ASM_FILES =			ft_isascii	\
 					ft_strncmp	\
 					ft_atoi		\
 					ft_align \
+					ft_cat	\
 					table_type
 
 

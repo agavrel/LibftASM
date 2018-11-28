@@ -15,6 +15,7 @@ bash Usage
 ```
 
 ### III - Use lldb (debugger) to read registers
+lldb
 ```
 ~/.lldbinit
 settings set target.x86-disassembly-flavor intel
@@ -28,6 +29,11 @@ register read
 register read rflags
 ```
 
+gdb
+```
+info registers
+info registers eax
+```
 
 ## 0x02 - Computer Architecture
 

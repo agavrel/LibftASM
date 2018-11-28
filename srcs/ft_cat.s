@@ -1,48 +1,46 @@
-%define SYSCALL(n)			0x2000000 | n
-%define READ				3
-%define WRITE				4
+%define SYSCALL(n)		(0x2000000 | n)
+%define READ					3
+%define WRITE					4
 %define BUFF_SIZE			0x100
+%define STDOUT				1
 
 section .text
 	global _ft_cat
 
-section .data
-	buf: times BUFF_SIZE db 0
-
 _ft_cat:
-	push rbp						; setup stack frame
+	push rbp								; setup stack frame
 	mov rbp, rsp
 
-	cmp edi, -1
-	je end
-	cmp edi, 255
-	jg end
+	push rbx                ;	backup preserved register
+	sub rsp, 8              ;	16bit align stack
 
-read_loop:
-	push rdi
-	lea rsi, [rel buf]
-	mov rdx, BUFF_SIZE
+	sub rsp, BUFF_SIZE      ;	make a big stack buffer
 
-	mov rax, SYSCALL(READ)			; call read, equivalent to {0x2000003}
+	mov rbx, rdi            ;	store fd in a preserved register
+
+.loop:
+	mov rdi, rbx            ;	fd
+	mov rsi, rsp            ;	buffer
+	mov rdx, BUFF_SIZE - 1  ;	read size
+	mov rax, SYSCALL(READ)  ;	call read
 	syscall
 
-	test	rax, rax				; check for end
-	jz		end_loop
+	jc .end                 ;	quit if carry flag was set (error)
+	test rax, rax           ;	check for '\0'
+	je .end
 
-	mov rdi, 1
-	lea rsi, [rel buf]
-	mov rdx, rax
 
-	mov rax, SYSCALL(WRITE)			; call write, equivalent to {0x2000004}
+	mov rdi, STDOUT
+	mov rsi, rsp            ;	buffer on stack
+	mov rdx, rax            ;	length returned by read
+	mov rax, SYSCALL(WRITE) ;	call write
 	syscall
 
-	jc end_loop			; check for error
-	pop rdi
-	jmp read_loop
+	jmp .loop
 
-end_loop:
-	pop rdi
-
-end:
-	leave	; equivalent to {mov rsp, rbp} & {pop rbp},	restore stack frame
+.end:
+	add rsp, BUFF_SIZE    	;	destroy big stack buffer
+	add rsp, 8
+	pop rbx                 ;	restore rbx
+	leave										; equivalent to {mov rsp, rbp} & {pop rbp},	restore stack frame
 	ret
