@@ -21,13 +21,21 @@
 #define NC		"\x1B[0m"
 #define KO		RED BOLD BLINK "KO" NC
 #define OK		GRN BOLD "OK" NC
-#define DISPLAY	false
+
+
+
+typedef struct
+{
+	bool display;
+}	Config;
+
+Config g_Config = {false};
 
 bool	ft_assert(const unsigned long a, const unsigned long b)
 {
 	if (a == b)
 	{
-		if (DISPLAY)
+		if (g_Config.display)
 			dprintf(1, OK" \t%lu -> %lu\n", a, b);
 		return true;
 	}
@@ -39,7 +47,7 @@ bool	ft_assert_int(const int i, const int a, const int b)
 {
 	if (a == b)
 	{
-		if (DISPLAY)
+		if (g_Config.display)
 			dprintf(1, OK" \t[%d] %d -> %d\n", i, a, b);
 		return true;
 	}
@@ -51,7 +59,7 @@ bool	ft_assert_long(const long i, const long a, const long b)
 {
 	if (a == b)
 	{
-		if (DISPLAY)
+		if (g_Config.display)
 			dprintf(1, OK" \t[%ld] %ld -> %ld\n", i, a, b);
 		return true;
 	}
@@ -63,7 +71,7 @@ bool	ft_assert_str(const char *a, const char *b)
 {
 	if (!strcmp(a, b))
 	{
-		if (DISPLAY)
+		if (g_Config.display)
 			dprintf(1, OK" \t%s -> %s\n", a, b);
 		return true;
 	}
@@ -514,8 +522,11 @@ void ft_collatz_test(void)	{
 **************************** MAIN ******************************************
 */
 
+
 int main(void)
 {
+//	g_Config.display = true;
+
 // 1st mandatory part
 	ft_bzero_test();
 	ft_strcat_test();
