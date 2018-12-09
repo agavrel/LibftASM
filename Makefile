@@ -6,7 +6,7 @@
 #    By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/29 21:40:42 by angavrel          #+#    #+#              #
-#    Updated: 2018/05/20 20:47:07 by angavrel         ###   ########.fr        #
+#    Updated: 2018/12/09 16:53:05 by angavrel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,10 @@ $(NAME): $(ASM_OBJ)
 
 test: re $(TEST_OBJ)
 	$(C_COMPILER) -L. $(TEST_OBJ) $(NAME) -o $(TEST)
+
+shared: $(ASM_OBJ)
+	gcc -fPIC -shared -o libft.so $^
+	cp libft.so libft-unit-test
 
 $(ASM_OBJ): $(ASM_OBJ_DIR)%.o: $(ASM_SRC_DIR)%.s
 	@/bin/mkdir -p $(ASM_OBJ_DIR)
